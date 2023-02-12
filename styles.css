@@ -152,11 +152,11 @@ h1 {
 
 /* Style the search box inside the navigation bar */
 .searchtopbar input[type=text] {
-  float: right;
+  float:right;
   padding: 6px;
   border: none; /*remove this if want outline around search box*/
   margin-top: 8px;
-  margin-right: 350px;
+  margin-right: 600px;
   font-size: 17px;
 
   width: 300px;
