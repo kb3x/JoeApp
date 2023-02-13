@@ -141,14 +141,32 @@ tr:nth-child(odd) {
     width: 8%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center;
   }
+
+  .navbar button {
+    float: left;
+    padding: 12px;
+    color: white;
+    /*text-decoration: none;*/ /*Uncomment to turn off underlining*/
+    font-size: 18px;
+    width: 8%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center;
+  }
   
   /* Add a background color on mouse-over */
   .navbar a:hover {
     background-color: #000;
   }
+
+  .navbar button:hover{
+    background-color: #000;
+  }
   
   /* Style the current/active link */
   .navbar a.active {
+    background-color: #04AA6D;
+  }
+
+  .navbar button.active{
     background-color: #04AA6D;
   }
   
@@ -161,5 +179,10 @@ tr:nth-child(odd) {
       text-align: left; /* If you want the text to be left-aligned on small screens */
     }
   
-    
+    .navbar button {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
   }
