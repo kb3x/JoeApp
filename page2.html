@@ -28,8 +28,7 @@
 
 <!-- The navigation menu -->
 <div class="navbar">
-  <button class="active" onclick="openCity(event, 'All')">All</button>
-  <button onclick="openCity(event, 'Beer')">Beer</button>
+  <button onclick="openCity(event, 'Beer')" id="defaultOpen">Beer</button>
   <button onclick="openCity(event, 'Wine')">Wine</button>
   <button onclick="openCity(event, 'Vodka')">Vodka</button>
   <button onclick="openCity(event, 'Rum')">Rum</button>
@@ -40,40 +39,46 @@
   <button onclick="openCity(event, 'Mezcal')">Mezcal</button>
 </div>
 
-<br><br>
-<table id="inventory", class="center">
-  <tr>
-    <th>Item</th>
-    <th>Quantity</th>
-  </tr>
-  <tr>
-    <td>Doritos</td>
-    <td>5</td>
-  </tr>
-  <tr>
-    <td>Poland Spring</td>
-    <td>3</td>
-  </tr>
-  <tr>
-    <td>Steak</td>
-    <td>8</td>
-  </tr>
-  <tr>
-    <td>Chicken</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>Pasta</td>
-    <td>9</td>
-  </tr>
-  <tr>
-    <td>Oranges</td>
-    <td>14</td>
-  </tr>
 
+<div id="Beer" class="tabcontent">
+  <br><br>
+  <h3>Beer</h3>
+  <table id="inventory", class="center">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+    </tr>
+    <tr>
+      <td>Doritos</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Poland Spring</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Steak</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Chicken</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Pasta</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Oranges</td>
+      <td>14</td>
+    </tr>
+  </table>
+</div>
 
-</table>
-
+<div id="Wine" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
 
 <!--Items for popup form---------------------------------------------->
 <div class="form-popup" id="addItemForm">
@@ -131,6 +136,25 @@
     <button type="cancel" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 
 
 
