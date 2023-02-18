@@ -42,7 +42,7 @@
 
 <div id="Beer" class="tabcontent">
   <br><br>
-  <h3>Beer</h3>
+  
   <table id="inventory", class="center">
     <tr>
       <th>Item</th>
@@ -73,11 +73,6 @@
       <td>14</td>
     </tr>
   </table>
-</div>
-
-<div id="Wine" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
 </div>
 
 <!--Items for popup form---------------------------------------------->
@@ -136,10 +131,22 @@
     <button type="cancel" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
+
+
+
+<h3>Beer</h3>
+<div id="Wine" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
 <div id="Tokyo" class="tabcontent">
   <h3>Tokyo</h3>
   <p>Tokyo is the capital of Japan.</p>
 </div>
+
+
+
 
 <script>
   function openCity(evt, cityName) {
@@ -155,8 +162,7 @@
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
-
-
+</script>
 
 <script>
 function openForm() {
