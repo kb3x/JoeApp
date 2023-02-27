@@ -91,7 +91,7 @@ h1 {
 
 /*page 2 formating-------------------------------------------*/
 
-.button1 {
+.addItemButton {
     border: 2;
     background-color: #70d879;
     color: white;
@@ -184,8 +184,6 @@ h1 {
 }
 
 
-
-
 table,
 th,
 td {
@@ -267,4 +265,9 @@ tr:nth-child(odd) {
       width: 100%;
       text-align: left; /* If you want the text to be left-aligned on small screens */
     }
+
+
+/*Pop up form*/
+
+
   }
