@@ -225,7 +225,7 @@ tr:nth-child(odd) {
   .navbar button {
     float: left;
     padding: 12px;
-    color: white;
+    color: rgba(73, 73, 73, 0.715);
     /*text-decoration: none;*/ /*Uncomment to turn off underlining*/
     font-size: 18px;
     width: 8%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
@@ -238,12 +238,12 @@ tr:nth-child(odd) {
   }
 
   .navbar button:hover{
-    background-color: #000;
+    background-color: rgba(223, 221, 221, 0.808);
   }
   
   /* Style the current/active link */
   .navbar a.active {
-    background-color: #04AA6D;
+    background-color: #04aa6d5c;
   }
 
   .navbar button.active{
