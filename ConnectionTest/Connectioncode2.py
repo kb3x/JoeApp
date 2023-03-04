@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="password",database="new_schema")
 
 mysql = MySQL(app)
 
