@@ -25,5 +25,9 @@ def page2():
 def addItem():
     return render_template('addItem.html')
 
+@app.route('/EditItem/')
+def EditItem():
+    return render_template('EditItem.html')
+
 if __name__=='__main__':
     app.run(debug = True)
