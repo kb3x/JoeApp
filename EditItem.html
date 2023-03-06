@@ -3,25 +3,24 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Inventory Management</title>
+  <title>Edit Item</title>
 </head>
 <body>
 
 <div class = "searchtopbar">
-  <form>
-    <input type="search" name="search" placeholder="Search..">
-  </form>
   <a class="active" href="#home">Log Out</a>
-  <div1>
-    <button class = "addItemButton" onclick="openForm()">Add Item</button>
-    <a href="#about">Add Item</a>
-    <a href="#contact">Remove Item</a>
-</div1>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <form>
+    <input type="search" name="search" placeholder="Search...">
+  </form>
 </div>
 
 <h1>Inventory</h1>
 
-
+<div1>
+    <button class = "button2">Remove Item</button>
+</div1>
 
 
 <!-- The navigation menu -->
@@ -37,55 +36,11 @@
   <button onclick="openTab(event, 'Mezcal')">Mezcal</button>
 </div>
 
-
-<div id="Beer" class="tabcontent">
-  <br><br>
-  
-  <table id="inventory", class="center">
-    <tr>
-      <th>Item</th>
-      <th>Quantity</th>
-    </tr>
-    <tr>
-      <td>Doritos</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>Poland Spring</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Steak</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <td>Chicken</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>Pasta</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <td>Oranges</td>
-      <td>14</td>
-    </tr>
-  </table>
-</div>
-
-<!--Items for popup form---------------------------------------------->
-<div class="form-popup" id="addItemForm">
-  <form action="/addItem" class="form-container", method="POST">
-    <h1>Enter Item Information</h1>
-
-    <label for="itemName"><b>Name</b></label>
-    <input type="text" placeholder="Enter Item Name" name="itemName" required>
-
-    <label for="Quantity"><b>Quantity</b></label>
-    <input type="text" placeholder="Enter Amount" name="Quantity" required>
+<br><br>
+<h2>Edit Item Information</h2>
 
     <!--Select options below-->
-      <label for="beverage"><b>Label Type</b></label>
+      <label for="beverage"><b>Change Label Type?</b></label>
       <select name="beverage" id="beverage">
         <option value="beer">Beer</option>
         <option value="wine">Wine</option>
@@ -97,10 +52,19 @@
         <option value="Brandy">Brandy</option>
         <option value="Mezcal">Mezcal</option>
       </select>
-      <br><br>
 
-      <label for="thresholdAmount"><b>Low Quantity Alert</b></label>
+      <br><br>
+      <label for="thresholdAmount"><b>Update Low Quantity Alert?</b></label>
       <input type="text" placeholder="Enter Amount" name="Threshold" required>
+      <br><br>
+      <label for="thresholdAmount"><b>Update Low Quantity Alert?</b></label>
+      <input type="text" placeholder="Enter Amount" name="Threshold" required>
+      <br><br>
+      <label for="itemUnits"><b>Change Units(ex. 20-Liter Bottles)?</b></label>
+      <input type="text" placeholder="Enter Units" name="Units" required>
+      <br><br>
+      <label for="notes"><b>Additional Notes:</b></label>
+      <input type="text" placeholder="Add your notes here..." name="notes" required>
       <br><br>
 
     <script>
@@ -130,22 +94,6 @@
   </form>
 </div>
 
-
-
-
-<div id="Wine" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-
-
-
-
 <script>
   function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -162,34 +110,7 @@
   }
 </script>
 
-<script>
-function openForm() {
-  document.getElementById("addItemForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("addItemForm").style.display = "none";
-}
-</script>
-
 <style>
-  /* The popup form - hidden by default */
-.form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
   width: 100%;
@@ -203,6 +124,7 @@ function closeForm() {
 .form-container input[type=text]:focus, .form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
+  text-align: center;
 }
 
 /* Set a style for the submit/login button */
@@ -227,7 +149,5 @@ function closeForm() {
   opacity: 1;
 }
 </style>
-
-
 </body>
 </html>
