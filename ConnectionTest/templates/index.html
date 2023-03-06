@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="./page2.html">Inventory Page</a>
+  <link rel="stylesheet" href="styles.css">
+
+
+
+  <link rel="stylesheet" href='/static/styles.css' />
+  <title>Test Page</title>
+</head>
+
+<body>
+    <div class = "searchtopbar">
+        <a class="active" href="#home">Log Out</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <form>
+          <input type="text" name="search" placeholder="Search..">
+        </form>
+      </div>
+
+
+      <button class = "button2" onclick = "window.location.href='./page2.html';">Link pages</button>
+
+</body>
+
+
 <table border = 1>
     {% for item in data %}
 <tr>
@@ -8,3 +37,8 @@
 </tr>
 {% endfor %}
 </table>
+
+
+
+
+

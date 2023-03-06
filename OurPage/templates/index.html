@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
     <title>Login Page</title>
-    <a href="./page2.html">Inventory Page</a>
+    <a href="{{ url_for('page2') }}">Page 2</a>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
 
@@ -32,3 +32,8 @@
   </form>
 
   </body>
+
+
+
+
+  </html>
