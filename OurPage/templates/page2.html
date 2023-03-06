@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <a href="{{ url_for('index') }}">Home</a>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<br><br>
+
+<div class = "searchtopbar">
+  <a class="active" href="#home">Log Out</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <form>
+    <input type="text" name="search" placeholder="Search..">
+  </form>
+</div>
+
+<h1>Inventory</h1>
+
+<div1>
+    <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
+    <button class = "addItemButton" onclick= window.location.href="{{ url_for('addItem') }}">Add Item</button>
+    <button class = "button2">Remove Item</button>
+</div1>
+
+
+<!-- The navigation menu -->
+<div class="navbar">
+  <button onclick="openTab(event, 'Beer')" id="defaultOpen">Beer</button>
+  <button onclick="openTab(event, 'Wine')">Wine</button>
+  <button onclick="openTab(event, 'Vodka')">Vodka</button>
+  <button onclick="openTab(event, 'Rum')">Rum</button>
+  <button onclick="openTab(event, 'Whiskey')">Whiskey</button>
+  <button onclick="openTab(event, 'Tequila')">Tequila</button>
+  <button onclick="openTab(event, 'Gin')">Gin</button>
+  <button onclick="openTab(event, 'Brandy')">Brandy</button>
+  <button onclick="openTab(event, 'Mezcal')">Mezcal</button>
+</div>
+
+
+<div id="Beer" class="tabcontent">
+  <br><br>
+  
+  <table id="inventory", class="center">
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+    </tr>
+    <tr>
+      <td>Doritos</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Poland Spring</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Steak</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Chicken</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Pasta</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Oranges</td>
+      <td>14</td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<table border = 1>
+
+<tr>
+    <td> {{item[0]}}</td>
+    <td> {{item[1]}}</td>
+    <td> {{item[2]}}</td>
+    <td> {{item[3]}}</td>
+</tr>
+
+</table>
+
+
+
+
+
+
+</body>
+</html>
