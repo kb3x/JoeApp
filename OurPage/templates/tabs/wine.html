@@ -19,7 +19,7 @@
   </form>
 </div>
 
-<h1>Inventory</h1>
+<h1>Wine Inventory</h1>
 
 <div1>
     <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
@@ -29,34 +29,20 @@
 </div1>
 
 
+<!-- The navigation menu -->
 <div class="navbar">
   <button onclick= window.location.href="{{ url_for('beer') }}">Beer</button>
-  <button onclick= window.location.href="{{ url_for('wine') }}">Wine</button>
+  <button class="active" onclick= window.location.href="{{ url_for('wine') }}">Wine</button>
   <button onclick= window.location.href="{{ url_for('vodka') }}">Vodka</button>
-  <!-- 
-  
-  
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Rum</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Whiskey</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Tequila</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Gin</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Brandy</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Mezcal</button> -->
+  <button onclick= window.location.href="{{ url_for('rum') }}">Rum</button>
+  <button onclick= window.location.href="{{ url_for('whiskey') }}">Whiskey</button>
+  <button onclick= window.location.href="{{ url_for('tequila') }}">Tequila</button>
+  <button onclick= window.location.href="{{ url_for('gin') }}">Gin</button>
+  <button onclick= window.location.href="{{ url_for('brandy') }}">Brandy</button>
+  <button onclick= window.location.href="{{ url_for('mezcal') }}">Mezcal</button>
 </div>
 
 
-<!-- The navigation menu -->
-<!-- <div class="navbar">
-  <button onclick="openTab(event, 'Beer')" id="defaultOpen">Beer</button>
-  <button onclick="openTab(event, 'Wine')">Wine</button>
-  <button onclick="openTab(event, 'Vodka')">Vodka</button>
-  <button onclick="openTab(event, 'Rum')">Rum</button>
-  <button onclick="openTab(event, 'Whiskey')">Whiskey</button>
-  <button onclick="openTab(event, 'Tequila')">Tequila</button>
-  <button onclick="openTab(event, 'Gin')">Gin</button>
-  <button onclick="openTab(event, 'Brandy')">Brandy</button>
-  <button onclick="openTab(event, 'Mezcal')">Mezcal</button>
-</div> -->
 
 
 <div id="Beer" class="tabcontent">

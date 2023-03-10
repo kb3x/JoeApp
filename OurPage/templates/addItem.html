@@ -35,10 +35,20 @@
         <input type="number" placeholder="Enter Amount" name="Threshold" min="0" max="50" required>
         <br><br>
         <button class="saveBtn" type="save">Save</button>
-    <button type="cancel" class="cancelBtn" onclick= window.location.href="{{ url_for('page2') }}">Close</button>
+        
+    <!-- <button type="cancel" class="cancelBtn" onclick= window.location.href="{{ url_for('page2') }}">Close</button> -->
+
+    <button type="cancel" class="cancelBtn" onclick="goPrev()">Close</button>
     <!--closeForm() function might have required check for user input-->
   </form>
 </div>
 
 
 </body>
+
+<script>
+  function goPrev()
+  {
+    window.history.back();
+  }
+</script>
