@@ -19,7 +19,7 @@
   </form>
 </div>
 
-<h1>Inventory</h1>
+<h1>Brandy Inventory</h1>
 
 <div1>
     <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
@@ -29,33 +29,17 @@
 </div1>
 
 
+<!-- The navigation menu -->
 <div class="navbar">
   <button onclick= window.location.href="{{ url_for('beer') }}">Beer</button>
   <button onclick= window.location.href="{{ url_for('wine') }}">Wine</button>
   <button onclick= window.location.href="{{ url_for('vodka') }}">Vodka</button>
-  <!-- 
-  
-  
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Rum</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Whiskey</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Tequila</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Gin</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Brandy</button>
-  <button onclick= window.location.href="{{ url_for('EditItem') }}">Mezcal</button> -->
-</div>
-
-
-<!-- The navigation menu -->
-<div class="navbar">
-  <a onclick= window.location.href="{{ url_for('Beer') }}">Beer</a>
-  <a onclick="openTab(event, 'Wine')">Wine</a>
-  <a onclick="openTab(event, 'Vodka')">Vodka</a>
-  <a onclick="openTab(event, 'Rum')">Rum</a>
-  <a onclick="openTab(event, 'Whiskey')">Whiskey</a>
-  <a onclick="openTab(event, 'Tequila')">Tequila</a>
-  <a onclick="openTab(event, 'Gin')">Gin</a>
-  <a onclick="openTab(event, 'Brandy')">Brandy</a>
-  <a onclick="openTab(event, 'Mezcal')">Mezcal</a>
+  <button onclick= window.location.href="{{ url_for('rum') }}">Rum</button>
+  <button onclick= window.location.href="{{ url_for('whiskey') }}">Whiskey</button>
+  <button onclick= window.location.href="{{ url_for('tequila') }}">Tequila</button>
+  <button onclick= window.location.href="{{ url_for('gin') }}">Gin</button>
+  <button class="active" onclick= window.location.href="{{ url_for('brandy') }}">Brandy</button>
+  <button onclick= window.location.href="{{ url_for('mezcal') }}">Mezcal</button>
 </div>
 
 
@@ -92,7 +76,6 @@
       <td>14</td>
     </tr>
   </table>
-
 </div>
 
 

@@ -29,9 +29,51 @@ def addItem():
 def EditItem():
     return render_template('EditItem.html')
 
+<<<<<<< HEAD
 @app.route('/Beer/')
 def Beer():
     return render_template('Beer.html')
+=======
+
+#tabs/pages route below---------------------------
+
+@app.route('/beer/')
+def beer():
+    return render_template('tabs/beer.html')
+
+@app.route('/wine/')
+def wine():
+    return render_template('tabs/wine.html')
+
+@app.route('/vodka/')
+def vodka():
+    return render_template('tabs/vodka.html')
+
+@app.route('/rum/')
+def rum():
+    return render_template('tabs/rum.html')
+
+@app.route('/whiskey/')
+def whiskey():
+    return render_template('tabs/whiskey.html')
+
+@app.route('/tequila/')
+def tequila():
+    return render_template('tabs/tequila.html')
+
+@app.route('/gin/')
+def gin():
+    return render_template('tabs/gin.html')
+
+@app.route('/brandy/')
+def brandy():
+    return render_template('tabs/brandy.html')
+
+@app.route('/mezcal/')
+def mezcal():
+    return render_template('tabs/mezcal.html')
+
+>>>>>>> 9c1b610998bbf00480e5321097e08b941dc0a77c
 
 if __name__=='__main__':
     app.run(debug = True)
