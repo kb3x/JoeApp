@@ -31,15 +31,15 @@
 
 <!-- The navigation menu -->
 <div class="navbar">
-  <button onclick="openTab(event, 'Beer')" id="defaultOpen">Beer</button>
-  <button onclick="openTab(event, 'Wine')">Wine</button>
-  <button onclick="openTab(event, 'Vodka')">Vodka</button>
-  <button onclick="openTab(event, 'Rum')">Rum</button>
-  <button onclick="openTab(event, 'Whiskey')">Whiskey</button>
-  <button onclick="openTab(event, 'Tequila')">Tequila</button>
-  <button onclick="openTab(event, 'Gin')">Gin</button>
-  <button onclick="openTab(event, 'Brandy')">Brandy</button>
-  <button onclick="openTab(event, 'Mezcal')">Mezcal</button>
+  <a onclick= window.location.href="{{ url_for('Beer') }}">Beer</a>
+  <a onclick="openTab(event, 'Wine')">Wine</a>
+  <a onclick="openTab(event, 'Vodka')">Vodka</a>
+  <a onclick="openTab(event, 'Rum')">Rum</a>
+  <a onclick="openTab(event, 'Whiskey')">Whiskey</a>
+  <a onclick="openTab(event, 'Tequila')">Tequila</a>
+  <a onclick="openTab(event, 'Gin')">Gin</a>
+  <a onclick="openTab(event, 'Brandy')">Brandy</a>
+  <a onclick="openTab(event, 'Mezcal')">Mezcal</a>
 </div>
 
 
@@ -76,6 +76,7 @@
       <td>14</td>
     </tr>
   </table>
+
 </div>
 
 

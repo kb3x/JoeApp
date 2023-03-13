@@ -78,8 +78,6 @@ span.psw {
   }
 }
 
-
-
 body {
     background-color: wheat;
 }
@@ -209,6 +207,7 @@ tr:nth-child(odd) {
     width: 100%; /*100%*/
     background-color: #555;
     overflow: auto;
+    display: flex;
   }
   
   /* Navigation links */
@@ -220,6 +219,7 @@ tr:nth-child(odd) {
     font-size: 18px;
     width: 8%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center;
+    flex: 1;
   }
 
   .navbar button {
@@ -247,6 +247,10 @@ tr:nth-child(odd) {
   }
 
   .navbar button.active{
+    background-color: #04AA6D;
+  }
+
+  .navbar button.defaultOpen{
     background-color: #04AA6D;
   }
   

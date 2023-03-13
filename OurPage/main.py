@@ -29,5 +29,9 @@ def addItem():
 def EditItem():
     return render_template('EditItem.html')
 
+@app.route('/Beer/')
+def Beer():
+    return render_template('Beer.html')
+
 if __name__=='__main__':
     app.run(debug = True)
