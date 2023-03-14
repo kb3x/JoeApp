@@ -29,11 +29,6 @@ def addItem():
 def EditItem():
     return render_template('EditItem.html')
 
-<<<<<<< HEAD
-@app.route('/Beer/')
-def Beer():
-    return render_template('Beer.html')
-=======
 
 #tabs/pages route below---------------------------
 
@@ -73,7 +68,6 @@ def brandy():
 def mezcal():
     return render_template('tabs/mezcal.html')
 
->>>>>>> 9c1b610998bbf00480e5321097e08b941dc0a77c
 
 if __name__=='__main__':
     app.run(debug = True)
