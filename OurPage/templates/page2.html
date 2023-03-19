@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <a href="{{ url_for('index') }}">Home</a>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<br><br>
+
+<div class = "searchtopbar">
+  <a class="active" href="#home">Log Out</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <form>
+    <input type="text" name="search" placeholder="Search..">
+  </form>
+</div>
+
+<h1>Inventory</h1>
+
+<div1>
+    <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
+    <button class = "addItemButton" onclick= window.location.href="{{ url_for('addItem') }}">Add Item</button>
+    <button class = "removeItemButton" onclick= window.location.href="{{ url_for('removeItem') }}">Remove Item</button>
+    <button class = "button2">Remove Item</button>
+    <button class = "edititem" onclick= window.location.href="{{ url_for('EditItem') }}">Edit Item</button>
+</div1>
+
+
+<div class="navbar">
+  <button onclick= window.location.href="{{ url_for('beer') }}">Beer</button>
+  <button onclick= window.location.href="{{ url_for('wine') }}">Wine</button>
+  <button onclick= window.location.href="{{ url_for('vodka') }}">Vodka</button>
+  <!-- 
+  
+  
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Rum</button>
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Whiskey</button>
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Tequila</button>
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Gin</button>
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Brandy</button>
+  <button onclick= window.location.href="{{ url_for('EditItem') }}">Mezcal</button> -->
+</div>
+
+
+<!-- The navigation menu -->
+<div class="navbar">
+  <a onclick= window.location.href="{{ url_for('Beer') }}">Beer</a>
+  <a onclick="openTab(event, 'Wine')">Wine</a>
+  <a onclick="openTab(event, 'Vodka')">Vodka</a>
+  <a onclick="openTab(event, 'Rum')">Rum</a>
+  <a onclick="openTab(event, 'Whiskey')">Whiskey</a>
+  <a onclick="openTab(event, 'Tequila')">Tequila</a>
+  <a onclick="openTab(event, 'Gin')">Gin</a>
+  <a onclick="openTab(event, 'Brandy')">Brandy</a>
+  <a onclick="openTab(event, 'Mezcal')">Mezcal</a>
+</div>
+
+
+<div id="Beer" class="tabcontent">
+  <br><br>
+  
+  <table id="inventory", class="center", border = 1>
+    {% for item in data %}
+    <tr>
+        <td> {{item[0]}}</td>
+        <td> {{item[1]}}</td>
+        
+        
+    </tr>
+<<<<<<< HEAD
+    {% endfor %}
+    </table>
+=======
+    <tr>
+      <td>Doritos</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Poland Spring</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Steak</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Chicken</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Pasta</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Oranges</td>
+      <td>14</td>
+    </tr>
+  </table>
+
+>>>>>>> c2fb7e57db531aae4446bc8e2161f4f48a1414b9
+</div>
+
+
+
+</body>
+</html>
