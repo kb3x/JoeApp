@@ -24,22 +24,22 @@
 <div1>
     <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
     <button class = "addItemButton" onclick= window.location.href="{{ url_for('addItem') }}">Add Item</button>
-    <button class = "button2">Remove Item</button>
+    <button class = "button2" onclick= window.location.href="{{ url_for('rmvItem') }}">Remove Item</button>
     <button class = "edititem" onclick= window.location.href="{{ url_for('EditItem') }}">Edit Item</button>
 </div1>
 
 
 <!-- The navigation menu -->
 <div class="navbar">
-  <button class="active" onclick= window.location.href="{{ url_for('beer') }}">Beer</button>
-  <button onclick= window.location.href="{{ url_for('wine') }}">Wine</button>
-  <button onclick= window.location.href="{{ url_for('vodka') }}">Vodka</button>
-  <button onclick= window.location.href="{{ url_for('rum') }}">Rum</button>
-  <button onclick= window.location.href="{{ url_for('whiskey') }}">Whiskey</button>
-  <button onclick= window.location.href="{{ url_for('tequila') }}">Tequila</button>
-  <button onclick= window.location.href="{{ url_for('gin') }}">Gin</button>
-  <button onclick= window.location.href="{{ url_for('brandy') }}">Brandy</button>
-  <button onclick= window.location.href="{{ url_for('mezcal') }}">Mezcal</button>
+  <a class="active" onclick= window.location.href="{{ url_for('beer') }}">Beer</a>
+  <a onclick= window.location.href="{{ url_for('wine') }}">Wine</a>
+  <a onclick= window.location.href="{{ url_for('vodka') }}">Vodka</a>
+  <a onclick= window.location.href="{{ url_for('rum') }}">Rum</a>
+  <a onclick= window.location.href="{{ url_for('whiskey') }}">Whiskey</a>
+  <a onclick= window.location.href="{{ url_for('tequila') }}">Tequila</a>
+  <a onclick= window.location.href="{{ url_for('gin') }}">Gin</a>
+  <a onclick= window.location.href="{{ url_for('brandy') }}">Brandy</a>
+  <a onclick= window.location.href="{{ url_for('mezcal') }}">Mezcal</a>
 </div>
 
 

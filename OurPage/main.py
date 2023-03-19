@@ -41,6 +41,10 @@ def page2():
 def EditItem():
     return render_template('EditItem.html')
 
+@app.route('/rmvItem/')
+def rmvItem():
+    return render_template('rmvItem.html')
+
 
 #tabs/pages route below---------------------------
 
