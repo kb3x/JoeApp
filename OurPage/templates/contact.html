@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Remove Items</title>
+
+</head>
+<body>
+  <div class="form-contact" id="contactForm">
+    <form action="/contact" class="form-contactItem", method="POST"> <!--change method to POST or get ??-->
+      
+    <h1>Contact Page</h1>
+      <div class="container">
+        <div style="text-align:left">
+          <h2>Contact Us</h2>
+          <p>Contact us about any issues or concerns you may have</p><br><br>
+        </div>
+        <div class="column">
+          
+          </div>
+          <div class="row">
+            <form action="/action_page.php">
+                <br><br>
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name.."><br><br>
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name.."><br><br>
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <br><br>
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+                <br><br>
+              </select>
+              <br><br>
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    
+      
+        
+  
+    
+        
+    <!-- <button type="cancel" class="cancelBtn" onclick= window.location.href="{{ url_for('page2') }}">Close</button> -->
+
+    <button type="cancel" class="cancelBtn" onclick="goPrev()">Close</button>
+    <!--closeForm() function might have required check for user input-->
+  </form>
+</div>
+
+
+</body>
+
+<script>
+  function goPrev()
+  {
+    history.go(-1);
+    /* window.history.back(); */
+    /*location.reload();*/
+  }
+</script>
