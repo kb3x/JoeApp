@@ -33,6 +33,10 @@ def EditItem():
 def rmvItem():
     return render_template('rmvItem.html')
 
+@app.route('/contact/')
+def contact():
+    return render_template('contact.html')
+
 
 #tabs/pages route below---------------------------
 
