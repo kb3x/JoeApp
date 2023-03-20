@@ -72,6 +72,43 @@ def brandy():
 def mezcal():
     return render_template('tabs/mezcal.html')
 
+#AddItem/pages route below---------------------------
+
+@app.route('/addBeer/')
+def addBeer():
+    return render_template('AddItem/beer.html')
+
+@app.route('/addWine/')
+def addWine():
+    return render_template('AddItem/wine.html')
+
+@app.route('/addVodka/')
+def addVodka():
+    return render_template('AddItem/vodka.html')
+
+@app.route('/addRum/')
+def addRum():
+    return render_template('AddItem/rum.html')
+
+@app.route('/addWhiskey/')
+def addWhiskey():
+    return render_template('AddItem/whiskey.html')
+
+@app.route('/addTequila/')
+def addTequila():
+    return render_template('AddItem/tequila.html')
+
+@app.route('/addGin/')
+def addGin():
+    return render_template('AddItem/gin.html')
+
+@app.route('/addBrandy/')
+def addBrandy():
+    return render_template('AddItem/brandy.html')
+
+@app.route('/addMezcal/')
+def addMezcal():
+    return render_template('AddItem/mezcal.html')
 
 if __name__=='__main__':
     app.run(debug = True)

@@ -2,34 +2,21 @@
 <html>
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Add Items</title>
+    <title>Add Mezcal Items</title>
 
 </head>
 <body>
   <div class="form-addItem" id="addItemForm">
     <form action="/addItem" class="form-addItem", method="POST"> <!--change method to POST or get ??-->
-      <h1>Enter Item Information</h1>
+      <h1>Enter Mezcal Item Information</h1>
   
       <label for="itemName"><b>Item Name:</b></label>
       <input type="text" placeholder="Enter Item Name" name="itemName" required> <br>
+
+      <br><br>
   
       <label for="Quantity"><b>Quantity(0-50):</b></label>
       <input type="number" placeholder="Enter Amount" name="Quantity" min="0" max="50" required> <br><br>
-  
-      <!--Select options below-->
-        <label for="beverage"><b>Label Type:</b></label>
-        <select name="beverage" id="beverage">
-          <option value="beer">Beer</option>
-          <option value="wine">Wine</option>
-          <option value="vodka">Vodka</option>
-          <option value="rum">Rum</option>
-          <option value="Whiskey">Whiskey</option>
-          <option value="Tequila">Tequila</option>
-          <option value="Gin">Gin</option>
-          <option value="Brandy">Brandy</option>
-          <option value="Mezcal">Mezcal</option>
-        </select>
-        <br><br>
   
         <label for="thresholdAmount"><b>Low Quantity Alert(0-50):</b></label>
         <input type="number" placeholder="Enter Amount" name="Threshold" min="0" max="50" required>
