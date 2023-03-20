@@ -13,7 +13,7 @@
 <div class = "searchtopbar">
   <a class="active" href="#home">Log Out</a>
   <a href="#about">About</a>
-  <a href="#contact">Contact</a>
+  <a onclick= window.location.href="{{ url_for('contact') }}">Contact</a>
   <form>
     <input type="text" name="search" placeholder="Search..">
   </form>
@@ -52,30 +52,13 @@
       <th>Item</th>
       <th>Quantity</th>
     </tr>
-    <tr>
-      <td>Doritos</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>Poland Spring</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Steak</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <td>Chicken</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>Pasta</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <td>Oranges</td>
-      <td>14</td>
-    </tr>
+      {% for item in data %}
+  <tr>
+      <td> {{item[0]}}</td>
+      <td> {{item[1]}}</td>
+      
+  </tr>
+  {% endfor %}
   </table>
 </div>
 
