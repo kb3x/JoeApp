@@ -115,9 +115,11 @@ def mezcal():
    data = cursor.fetchall()
    return render_template('tabs/mezcal.html', data=data)
 
+
 @app.route('/addItem/', methods=['GET', 'POST'])
 def addItem():
    if request.method == "POST":
+      dict = {'beer':'beer', 'vodka':'vodka', 'mezcal':'mezcal', 'brandy':'brandy', 'gin':'gin', 'tequila':'tequila', 'whiskey':'whiskey', 'rum':'rum', 'wine':'wine'}
       inputDetails = request.form
       brand = inputDetails['itemName']
       stock = inputDetails['Quantity']
@@ -125,7 +127,7 @@ def addItem():
       warning = inputDetails['Threshold']
       warningTrigger = 0
       cur = mysql.connection.cursor()
-      cur.execute("INSERT INTO beer(brand, stock, warning, warningTrigger) VALUES(%s, %s, %s, %s)", (brand, stock, warning, warningTrigger))
+      cur.execute(f"INSERT INTO {dict[liquor]}(brand, stock, warning, warningTrigger) VALUES(%s, %s, %s, %s)", (brand, stock, warning, warningTrigger))
       try:
             mysql.connection.commit()
             cur.close()
