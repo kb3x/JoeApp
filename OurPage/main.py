@@ -11,12 +11,12 @@ from mysql import connector    #, request
 # The default folder name should be "templates" else need to mention custom folder name
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
-app.config['MYSQL_DB'] = 'new_schema'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
+# app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+# db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -31,11 +31,12 @@ def index():
  
 @app.route('/page2/')
 def page2():
-   cursor = db.cursor()
-   cursor.execute("SELECT nameFoods, stockFoods FROM foods")
-   data = cursor.fetchall()
-   print(data)
-   return render_template('page2.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT nameFoods, stockFoods FROM foods")
+#    data = cursor.fetchall()
+#    print(data)
+   #return render_template('page2.html', data=data)
+   return render_template('page2.html')
 
 @app.route('/EditItem/')
 def EditItem():
@@ -54,66 +55,75 @@ def contact():
 
 @app.route('/beer/')
 def beer():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM beer")
-   data = cursor.fetchall()
-   return render_template('tabs/beer.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM beer")
+#    data = cursor.fetchall()
+   #return render_template('tabs/beer.html', data=data)
+   return render_template('tabs/beer.html')
 
 @app.route('/wine/')
 def wine():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM wine")
-   data = cursor.fetchall()
-   return render_template('tabs/wine.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM wine")
+#    data = cursor.fetchall()
+   #return render_template('tabs/wine.html', data=data)
+   return render_template('tabs/wine.html')
 
 @app.route('/vodka/')
 def vodka():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM vodka")
-   data = cursor.fetchall()
-   return render_template('tabs/vodka.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM vodka")
+#    data = cursor.fetchall()
+   #return render_template('tabs/vodka.html', data=data)
+   return render_template('tabs/vodka.html')
 
 @app.route('/rum/')
 def rum():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM rum")
-   data = cursor.fetchall()
-   return render_template('tabs/rum.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM rum")
+#    data = cursor.fetchall()
+   #return render_template('tabs/rum.html', data=data)
+   return render_template('tabs/rum.html')
 
 @app.route('/whiskey/')
 def whiskey():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM whiskey")
-   data = cursor.fetchall()
-   return render_template('tabs/whiskey.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM whiskey")
+#    data = cursor.fetchall()
+   #return render_template('tabs/whiskey.html', data=data)
+   return render_template('tabs/whiskey.html')
 
 @app.route('/tequila/')
 def tequila():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM tequila")
-   data = cursor.fetchall()
-   return render_template('tabs/tequila.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM tequila")
+#    data = cursor.fetchall()
+   #return render_template('tabs/tequila.html', data=data)
+   return render_template('tabs/tequila.html')
 
 @app.route('/gin/')
 def gin():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM gin")
-   data = cursor.fetchall()
-   return render_template('tabs/gin.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM gin")
+#    data = cursor.fetchall()
+   #return render_template('tabs/gin.html', data=data)
+    return render_template('tabs/gin.html')
 
 @app.route('/brandy/')
 def brandy():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM brandy")
-   data = cursor.fetchall()
-   return render_template('tabs/brandy.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM brandy")
+#    data = cursor.fetchall()
+   #return render_template('tabs/brandy.html', data=data)
+    return render_template('tabs/brandy.html')
 
 @app.route('/mezcal/')
 def mezcal():
-   cursor = db.cursor()
-   cursor.execute("SELECT brand, stock FROM mezcal")
-   data = cursor.fetchall()
-   return render_template('tabs/mezcal.html', data=data)
+#    cursor = db.cursor()
+#    cursor.execute("SELECT brand, stock FROM mezcal")
+#    data = cursor.fetchall()
+   #return render_template('tabs/mezcal.html', data=data)
+   return render_template('tabs/mezcal.html')
 
 
 @app.route('/addItem/', methods=['GET', 'POST'])
