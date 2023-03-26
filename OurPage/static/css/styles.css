@@ -349,30 +349,3 @@ tr:nth-child(odd) {
   background: #f1f1f1;
 }
 
-
-
-
-/*Remove Item TEST Page-------------------------------------------*/
-.form-removeItem input[type=text] {
-  width: 20%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #00ff15;
-}
-.form-removeItem input[type=number] {
-  width: 20%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #3700ff;
-}
-
-.form-removeItem select[name] {
-  width: 20%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #ff0000;
-}
-
