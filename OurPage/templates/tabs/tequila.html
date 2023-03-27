@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventory Management</title>
   <a href="{{ url_for('index') }}">Home</a>
@@ -47,21 +48,35 @@
   <br><br>
   
   <table id="inventory", class="center">
-    <tr>
-      <th>Item</th>
-      <th>Quantity</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for item in data %}
-  <tr>
-      <td> {{item[0]}}</td>
-      <td> {{item[1]}}</td>
-      
-  </tr>
-  {% endfor %}
+        <tr>
+          <td> {{item[0]}}</td>
+          <td> {{item[1]}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
 
-
+<script>
+  function refreshTable() {
+    $.getJSON('/tequiladata', function(data) {
+      var rows = '';
+      $.each(data, function(index, row) {
+        rows += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>';
+      });
+      $('#inventory tbody').html(rows);
+    });
+  }
+  setInterval(refreshTable, 1000);
+</script>
 
 </body>
 </html>
