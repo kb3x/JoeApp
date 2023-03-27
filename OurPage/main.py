@@ -43,6 +43,14 @@ def page2():
 def contact():
     return render_template('contact.html')
 
+@app.route('/addContact/')
+def addContact():
+    return render_template('addContact.html')
+
+@app.route('/rmvContact/')
+def rmvContact():
+    return render_template('rmvContact.html')
+
 
 #tabs/pages route below---------------------------
 @app.route('/beerdata')

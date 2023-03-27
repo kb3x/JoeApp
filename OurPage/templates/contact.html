@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <a href="{{ url_for('index') }}">Home</a>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Remove Items</title>
-
 </head>
 <body>
-  <div class="form-contact" id="contactForm">
-    <form action="/contact" class="form-contactItem", method="POST"> <!--change method to POST or get ??-->
-      
-    <h1>Contact Page</h1>
-      <div class="container">
-        <div style="text-align:left">
-          <h2>Contact Us</h2>
-          <p>Contact us about any issues or concerns you may have</p><br><br>
-        </div>
-        <div class="column">
-          
-          </div>
-          <div class="row">
-            <form action="/action_page.php">
-                <br><br>
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name.."><br><br>
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name.."><br><br>
-              <label for="country">Country</label>
-              <select id="country" name="country">
-                <br><br>
-                <option value="australia">Australia</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-                <br><br>
-              </select>
-              <br><br>
-              <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-              <input type="submit" value="Submit">
-            </form>
-          </div>
-        </div>
-      </div>
-    
-      
-        
-  
-    
-        
-    <!-- <button type="cancel" class="cancelBtn" onclick= window.location.href="{{ url_for('page2') }}">Close</button> -->
 
-    <button type="cancel" class="cancelBtn" onclick="goPrev()">Close</button>
-    <!--closeForm() function might have required check for user input-->
+<br><br>
+
+<div class = "searchtopbar">
+  <a class="active" href="#home">Log Out</a>
+  <a href="#about">About</a>
+  <a onclick= window.location.href="{{ url_for('contact') }}">Contact</a>
+  <form>
+    <input type="text" name="search" placeholder="Search..">
   </form>
 </div>
 
+<h1>Contact Page</h1>
+
+<div1>
+    <!--<button class = "addItemButton" onclick="openForm()">Add Item</button> -->
+    <button class = "addItemButton" onclick= window.location.href="{{ url_for('addContact') }}">Add Contact</button>
+    <button class = "button2" onclick= window.location.href="{{ url_for('rmvContact') }}">Remove Contact</button>
+    <!-- <button class = "edititem" onclick= window.location.href="{{ url_for('EditItem') }}">Edit Item</button> -->
+</div1>
+
+
+<!-- The navigation menu -->
+<div class="navbar">
+  <a class="active" onclick= window.location.href="{{ url_for('beer') }}">Beer</a>
+  <a onclick= window.location.href="{{ url_for('wine') }}">Wine</a>
+  <a onclick= window.location.href="{{ url_for('vodka') }}">Vodka</a>
+  <a onclick= window.location.href="{{ url_for('rum') }}">Rum</a>
+  <a onclick= window.location.href="{{ url_for('whiskey') }}">Whiskey</a>
+  <a onclick= window.location.href="{{ url_for('tequila') }}">Tequila</a>
+  <a onclick= window.location.href="{{ url_for('gin') }}">Gin</a>
+  <a onclick= window.location.href="{{ url_for('brandy') }}">Brandy</a>
+  <a onclick= window.location.href="{{ url_for('mezcal') }}">Mezcal</a>
+</div>
+
+
+
+<div id="Beer" class="tabcontent">
+  <br><br>
+  
+  <table id="inventory", class="center">
+    <tr>
+      <th>Supplier Name</th>
+      <th>Information</th>
+      <th>Address</th>
+      <th>Notes</th>
+    </tr>
+      {% for item in data %}
+  <tr>
+      <td> {{item[0]}}</td>
+      <td> {{item[1]}}</td>
+      
+  </tr>
+  {% endfor %}
+  </table>
+</div>
+
+
 
 </body>
-
-<script>
-  function goPrev()
-  {
-    history.go(-1);
-    /* window.history.back(); */
-    /*location.reload();*/
-  }
-</script>
+</html>
