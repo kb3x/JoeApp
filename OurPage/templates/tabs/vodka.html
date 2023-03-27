@@ -52,17 +52,20 @@
   <br><br>
   
   <table id="inventory", class="center">
-    <tr>
-      <th>Item</th>
-      <th>Quantity</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for item in data %}
-  <tr>
-      <td> {{item[0]}}</td>
-      <td> {{item[1]}}</td>
-      
-  </tr>
-  {% endfor %}
+        <tr>
+          <td> {{item[0]}}</td>
+          <td> {{item[1]}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
   </table>
 </div>
 
@@ -71,7 +74,7 @@
     $.getJSON('/vodkadata', function(data) {
       var rows = '';
       $.each(data, function(index, row) {
-        rows += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>';
+        rows += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>';
       });
       $('#inventory tbody').html(rows);
     });

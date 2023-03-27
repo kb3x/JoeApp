@@ -56,7 +56,7 @@ def rmvContact():
 @app.route('/beerdata')
 def get_beer_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM beer ")
+    cur.execute("SELECT brand, stock FROM beer ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -72,7 +72,7 @@ def beer():
 @app.route('/winedata')
 def get_wine_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM wine ")
+    cur.execute("SELECT brand, stock FROM wine ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -87,7 +87,7 @@ def wine():
 @app.route('/vodkadata')
 def get_vodka_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM vodka ")
+    cur.execute("SELECT brand, stock FROM vodka ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -102,7 +102,7 @@ def vodka():
 @app.route('/rumdata')
 def get_rum_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM rum ")
+    cur.execute("SELECT brand, stock FROM rum ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -117,7 +117,7 @@ def rum():
 @app.route('/whiskeydata')
 def get_whiskey_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM whiskey ")
+    cur.execute("SELECT brand, stock FROM whiskey ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -132,7 +132,7 @@ def whiskey():
 @app.route('/tequiladata')
 def get_tequila_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM tequila ")
+    cur.execute("SELECT brand, stock FROM tequila ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -147,7 +147,7 @@ def tequila():
 @app.route('/gindata')
 def get_gin_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM gin ")
+    cur.execute("SELECT brand, stock FROM gin ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -162,7 +162,7 @@ def gin():
 @app.route('/brandydata')
 def get_brandy_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM brandy ")
+    cur.execute("SELECT brand, stock FROM brandy ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -177,7 +177,7 @@ def brandy():
 @app.route('/mezcaldata')
 def get_mezcal_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM mezcal ")
+    cur.execute("SELECT brand, stock FROM mezcal ")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
