@@ -79,7 +79,7 @@ span.psw {
 }
 
 body {
-    background-color: rgb(200, 245, 179);
+    background-color:#EEEFF7;
 }
 
 h1 {
@@ -351,4 +351,8 @@ tr:nth-child(odd) {
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cc936f360a8604b812d5c8ef1d6e4faf40f67ceb
