@@ -4,7 +4,8 @@ from flask import Flask,render_template, request, flash, redirect
 from flask_mysqldb import MySQL
 import mysql.connector
 from mysql import connector
-
+import json
+from flask import jsonify
 #missing item----------------------------------------------------------
 
 # Provide template folder name
@@ -13,10 +14,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
+app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -55,7 +56,7 @@ def contact():
 @app.route('/contactdata')
 def get_contact_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM contact")
+    cur.execute("SELECT name, information, address, notes FROM contact")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
@@ -85,9 +86,9 @@ def rmvContact():
     
       cursor = mysql.connection.cursor()
       inputDetails = request.form
-      column_value = inputDetails['SupplierName']
+      column_value = inputDetails['name']
       column_name = 'name'
-      cursor.execute("DELETE FROM contact WHERE {} = %s".format(contact, column_name), (column_value,))
+      cursor.execute("DELETE FROM {} WHERE {} = %s".format(contact, column_name), (column_value,))
       try:
          mysql.connection.commit()
 
@@ -98,7 +99,7 @@ def rmvContact():
          return 'There was an error deleting this data'
          
     else:
-      render_template('rmvContact.html')
+      return render_template('rmvContact.html')
 
 
 #tabs/pages route below---------------------------
