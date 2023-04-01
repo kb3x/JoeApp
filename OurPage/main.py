@@ -41,22 +41,66 @@ def page2():
 
 @app.route('/contact/')
 def contact():
-    return render_template('contact.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT name, information, address, notes FROM contact")
+   data = cursor.fetchall()
+   cursor.close()
+   return render_template('contact.html', data=data)
 
-@app.route('/addContact/')
+@app.route('/contactdata')
+def get_contact_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM contact")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
+@app.route('/addContact/', methods=['GET', 'POST'])
 def addContact():
-    return render_template('addContact.html')
+    if request.method == "POST":
+      inputDetails = request.form
+      number = inputDetails['phoneNum']
+      name = inputDetails['SupplierName']
+      address = inputDetails['address']
+      notes = inputDetails['notes']
+      cur = mysql.connection.cursor()
+      cur.execute(f"INSERT INTO contact(information, name, address, notes) VALUES(%s, %s, %s, %s)", (number, name, address, notes))
+      try:
+            mysql.connection.commit()
+            cur.close()
+            return "Success!"
+      except:
+            return "There was an error adding the information."
+    else:
+          return render_template('addContact.html')
 
-@app.route('/rmvContact/')
+@app.route('/rmvContact/', methods=['GET', 'POST'])
 def rmvContact():
-    return render_template('rmvContact.html')
+    if request.method == "POST":
+    
+      cursor = mysql.connection.cursor()
+      inputDetails = request.form
+      column_value = inputDetails['SupplierName']
+      column_name = 'name'
+      cursor.execute("DELETE FROM contact WHERE {} = %s".format(contact, column_name), (column_value,))
+      try:
+         mysql.connection.commit()
+
+         
+         cursor.close()
+         return 'Row deleted successfully'
+      except:
+         return 'There was an error deleting this data'
+         
+    else:
+      render_template('rmvContact.html')
 
 
 #tabs/pages route below---------------------------
 @app.route('/beerdata')
 def get_beer_data():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT brand, stock FROM beer ")
+    cur.execute("SELECT brand, stock FROM beer")
     data = cur.fetchall()
     cur.close()
     return jsonify(data)
