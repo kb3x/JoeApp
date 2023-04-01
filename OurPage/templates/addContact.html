@@ -6,36 +6,69 @@
 
 </head>
 <body>
-  <div class="form-contact" id="contactForm">
+  <div class="form-addContact" id="contactForm">
     <form action="/contact" class="form-contactItem", method="POST"> <!--change method to POST or get ??-->
-      
-    <h1>Add Contact</h1>
-      <div class="container">
+    <br><br>
+    <h1><u>Add Contact</u></h1>
+
+    <div class="flex">
+      <div class="column">
+        <div class="card">
+
+
+          <div class="container2">
+            
+            <div class="float-child">
+              <br>
+              <label for="SupplierName"><b>Enter Supplier Name:</b></label>
+              <br><br><br><br>
+              <label for="phoneNum"><b>Supplier Phone Number:</b></label>
+              <br><br><br><br>
+              <label for="address"><b>Supplier Email:</b></label>
+              <br><br><br><br>
+              <label for="notes"><b>Notes(Optional):</b></label> <br>
+            </div>
+
+            <div class="float-child2">
+              <input type="text" id="SupplierName" name="SupplierName" placeholder="John Smith" required>
+              <br>
+              <input type="text" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required> <!--Change up to only have phone numbers-->
+              <br>
+              <input type="text" id="address" name="address" placeholder="JohnSmith@gmail.com" required>
+              <br><br>
+              <textarea id="notes" name="notes" placeholder="Supplier Notes.." style="height: 40px"></textarea>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+      <!-- <div class="container">
         <div class="column">
           
           </div>
-          <div class="row">
-            <form action="/action_page.php">
+          <div class="row">           
                 <br><br>
               <label for="SupplierName">Enter Supplier Name:</label>
-              <input type="text" id="SupplierName" name="SupplierName" placeholder="Supplier Name.."><br><br>
+              <input type="text" id="SupplierName" name="SupplierName" placeholder="John Smith" required><br><br>
               <label for="phoneNum">Supplier Phone Number:</label>
-              <input type="number" id="phoneNum" name="phoneNum" placeholder="Enter Phone Number.."><br><br> <!--Change up to only have phone numbers-->
-              <label for="address">Supplier Address:</label>
-              <input type="text" id="address" name="address" placeholder="Enter Address.."><br><br>
-              <br><br>
-              <label for="notes">Notes:</label> <br>
+              <input type="text" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br><br>
+              <label for="address">Supplier Email:</label>
+              <input type="text" id="address" name="address" placeholder="JohnSmith@gmail.com" required><br><br>
+              <br>
+              <label for="notes">Notes(Optional):</label> <br>
               <textarea id="notes" name="notes" placeholder="Supplier Notes.." style="height:100px"></textarea>
-            </form>
           </div>
         </div>
-      </div>
+      </div> -->
     
       
         
       <button class="saveBtn" type="save">Save</button>
         
-      <button type="cancel" class="cancelBtn" onclick="goPrev()">Close</button>  
+      <button type="cancel" class="button2" onclick="goPrev()">Close</button>  
     
   </form>
 </div>

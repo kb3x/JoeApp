@@ -3,7 +3,7 @@
 from flask import Flask,render_template, request, flash, redirect
 from flask_mysqldb import MySQL
 import mysql.connector
-from mysql import connector    #, request
+from mysql import connector
 
 #missing item----------------------------------------------------------
 
@@ -11,12 +11,12 @@ from mysql import connector    #, request
 # The default folder name should be "templates" else need to mention custom folder name
 app = Flask(__name__)
 
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
-# app.config['MYSQL_DB'] = 'new_schema'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
+app.config['MYSQL_DB'] = 'new_schema'
 
-# db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -42,9 +42,7 @@ def page2():
 def EditItem():
     return render_template('EditItem.html')
 
-@app.route('/rmvItem/')
-def rmvItem():
-    return render_template('rmvItem.html')
+
 
 @app.route('/contact/')
 def contact():
@@ -70,75 +68,75 @@ def get_beer_data():
 
 @app.route('/beer/')
 def beer():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM beer")
-#    data = cursor.fetchall()
-   #return render_template('tabs/beer.html', data=data)
-   return render_template('tabs/beer.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM beer")
+   data = cursor.fetchall()
+   return render_template('tabs/beer.html', data=data)
+   #return render_template('tabs/beer.html')
 
 @app.route('/wine/')
 def wine():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM wine")
-#    data = cursor.fetchall()
-   #return render_template('tabs/wine.html', data=data)
-   return render_template('tabs/wine.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM wine")
+   data = cursor.fetchall()
+   return render_template('tabs/wine.html', data=data)
+   #return render_template('tabs/wine.html')
 
 @app.route('/vodka/')
 def vodka():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM vodka")
-#    data = cursor.fetchall()
-   #return render_template('tabs/vodka.html', data=data)
-   return render_template('tabs/vodka.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM vodka")
+   data = cursor.fetchall()
+   return render_template('tabs/vodka.html', data=data)
+   #return render_template('tabs/vodka.html')
 
 @app.route('/rum/')
 def rum():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM rum")
-#    data = cursor.fetchall()
-   #return render_template('tabs/rum.html', data=data)
-   return render_template('tabs/rum.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM rum")
+   data = cursor.fetchall()
+   return render_template('tabs/rum.html', data=data)
+   #return render_template('tabs/rum.html')
 
 @app.route('/whiskey/')
 def whiskey():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM whiskey")
-#    data = cursor.fetchall()
-   #return render_template('tabs/whiskey.html', data=data)
-   return render_template('tabs/whiskey.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM whiskey")
+   data = cursor.fetchall()
+   return render_template('tabs/whiskey.html', data=data)
+   #return render_template('tabs/whiskey.html')
 
 @app.route('/tequila/')
 def tequila():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM tequila")
-#    data = cursor.fetchall()
-   #return render_template('tabs/tequila.html', data=data)
-   return render_template('tabs/tequila.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM tequila")
+   data = cursor.fetchall()
+   return render_template('tabs/tequila.html', data=data)
+   #return render_template('tabs/tequila.html')
 
 @app.route('/gin/')
 def gin():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM gin")
-#    data = cursor.fetchall()
-   #return render_template('tabs/gin.html', data=data)
-    return render_template('tabs/gin.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM gin")
+   data = cursor.fetchall()
+   return render_template('tabs/gin.html', data=data)
+    #return render_template('tabs/gin.html')
 
 @app.route('/brandy/')
 def brandy():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM brandy")
-#    data = cursor.fetchall()
-   #return render_template('tabs/brandy.html', data=data)
-    return render_template('tabs/brandy.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM brandy")
+   data = cursor.fetchall()
+   return render_template('tabs/brandy.html', data=data)
+   # return render_template('tabs/brandy.html')
 
 @app.route('/mezcal/')
 def mezcal():
-#    cursor = db.cursor()
-#    cursor.execute("SELECT brand, stock FROM mezcal")
-#    data = cursor.fetchall()
-   #return render_template('tabs/mezcal.html', data=data)
-   return render_template('tabs/mezcal.html')
+   cursor = db.cursor()
+   cursor.execute("SELECT brand, stock FROM mezcal")
+   data = cursor.fetchall()
+   return render_template('tabs/mezcal.html', data=data)
+   #return render_template('tabs/mezcal.html')
 
 @app.route('/addItem/', methods=['GET', 'POST'])
 def addItem():
@@ -195,28 +193,28 @@ def rmvItem():
        return render_template('/rmvItem.html')
 
 
-@app.route('/EditItem/', methods=['POST', 'GET'])
-def EditItem():
-   if request.method == "POST":
+# @app.route('/EditItem/', methods=['POST', 'GET'])
+# def EditItem():
+#    if request.method == "POST":
 
-      cursor = mysql.connection.cursor()
+#       cursor = mysql.connection.cursor()
 
       
-      column_name = 'brand'
-      column_value = request.form.get('itemName')
-      liquor = request.form.get('beverage')
-      input = request.form.get('userInput')
-      cursor.execute("UPDATE {} SET {} WHERE {} = %s".format(liquor, input, column_name), (column_value,))
-      try:
-         mysql.connection.commit()
+#       column_name = 'brand'
+#       column_value = request.form.get('itemName')
+#       liquor = request.form.get('beverage')
+#       input = request.form.get('userInput')
+#       cursor.execute("UPDATE {} SET {} WHERE {} = %s".format(liquor, input, column_name), (column_value,))
+#       try:
+#          mysql.connection.commit()
 
          
-         cursor.close()
-         return 'Data successfully edited.'
-      except:
-         return 'There was an error editing this data'
-   else:
-      return render_template('/EditItem.html')
+#          cursor.close()
+#          return 'Data successfully edited.'
+#       except:
+#          return 'There was an error editing this data'
+#    else:
+#       return render_template('/EditItem.html')
    
 
       
