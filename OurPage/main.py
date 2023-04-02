@@ -4,7 +4,6 @@ from flask import Flask,render_template, request, flash, redirect
 from flask_mysqldb import MySQL
 import mysql.connector
 from mysql import connector    #, request
-from flask_caching import Cache
 import json
 from flask import jsonify
 #missing item----------------------------------------------------------
@@ -15,10 +14,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
+app.config['MYSQL_PASSWORD'] = 'SpartenJ117$'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="SpartenJ117$",database="new_schema")
 
 mysql = MySQL(app)
 
