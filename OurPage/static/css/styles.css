@@ -227,7 +227,7 @@ tr:nth-child(odd) {
     overflow: auto;
     display: flex;
   }
-  
+
   /* Navigation links */
   .navbar a {
     float: left;
@@ -249,7 +249,7 @@ tr:nth-child(odd) {
     width: 8%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center;
   }
-  
+
   /* Add a background color on mouse-over */
   .navbar a:hover {
     background-color: #000;
@@ -258,7 +258,7 @@ tr:nth-child(odd) {
   .navbar button:hover{
     background-color: rgba(223, 221, 221, 0.808);
   }
-  
+
   /* Style the current/active link */
   .navbar a.active {
     background-color: #04aa6d5c;
@@ -271,9 +271,9 @@ tr:nth-child(odd) {
   .navbar button.defaultOpen{
     background-color: #04AA6D;
   }
-  
+
   /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-  
+
   @media screen and (max-width: 500px) {
     .navbar a {
       float: none;
@@ -296,12 +296,15 @@ tr:nth-child(odd) {
     background-color: #70d879;
     color: white;
     padding: 15px 30px;
+    width: 130px;
     text-align: center;
     position: fixed;
     /*top: 0;*/
     font-size: 16px;
     margin: 5px 5px;
     cursor: pointer;
+    bottom: 80px;
+    right: 0;
 }
 
 /* Change the color of links on hover */
@@ -331,14 +334,16 @@ tr:nth-child(odd) {
 
 /* Full-width input field for Item Name */
 .form-addItem input[type=text] {
-  width: 20%;
+  /* width: 50%; */
+  width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
 }
 .form-addItem input[type=number] {
-  width: 20%;
+  /* width: 40%; */
+  width: 85%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -346,13 +351,129 @@ tr:nth-child(odd) {
 }
 
 .form-addItem select[name] {
-  width: 20%;
+  /* width: 40%; */
+  width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
-<<<<<<< HEAD
 }
-=======
+
+/*Remove Item Page*/
+.form-removeItem input[type=text] {
+  /* width: 50%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
 }
->>>>>>> cc936f360a8604b812d5c8ef1d6e4faf40f67ceb
+
+.form-removeItem select[name] {
+  /* width: 40%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Add Contact Page*/
+.form-addContact input[type=text] {
+  /* width: 50%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-addContact input[type=number] {
+  /* width: 40%; */
+  width: 85%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-addContact select[name] {
+  /* width: 40%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/*Remove Contact Page*/
+.form-rmvContact select[name] {
+  /* width: 40%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+
+
+/*Textbox formatting*/
+.column {
+  /* float:left; */
+  width: 35%; /*Formats the width of the box that holds the prompts*/
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/*Formatting for the box that holds the prompts*/
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  /* background-color: #a0d1ff; */
+  background-color: #d8d8d8;
+}
+
+/*centers the box that holds prompts*/
+.flex { 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container2 {
+  padding: 16px;
+}
+
+/*Formatting for the left column(prompts)*/
+.float-child {
+  width: 42%;
+  float: left;
+  padding: 20px;
+  /* border: 2px solid red; */
+} 
+
+/*Formatting for the right column(input boxes)*/
+.float-child2 {
+  width: 40%;
+  float: right;
+  padding: 16px;
+  /* border: 2px solid red; */
+  text-align: right;
+} 
