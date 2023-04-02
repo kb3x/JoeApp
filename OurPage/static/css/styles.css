@@ -466,7 +466,7 @@ tr:nth-child(odd) {
   width: 42%;
   float: left;
   padding: 20px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 } 
 
 /*Formatting for the right column(input boxes)*/
@@ -474,6 +474,6 @@ tr:nth-child(odd) {
   width: 40%;
   float: right;
   padding: 16px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   text-align: right;
 } 
