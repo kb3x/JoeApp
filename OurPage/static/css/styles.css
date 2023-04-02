@@ -359,6 +359,40 @@ tr:nth-child(odd) {
   background: #f1f1f1;
 }
 
+/*Remove Item Page*/
+.form-removeItem input[type=text] {
+  /* width: 50%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-removeItem select[name] {
+  /* width: 40%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Add Contact Page*/
 .form-addContact input[type=text] {
@@ -387,6 +421,15 @@ tr:nth-child(odd) {
   background: #f1f1f1;
 }
 
+/*Remove Contact Page*/
+.form-rmvContact select[name] {
+  /* width: 40%; */
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
 
 
 
@@ -404,7 +447,7 @@ tr:nth-child(odd) {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
   /* background-color: #a0d1ff; */
-  background-color: #b6b6b6;
+  background-color: #d8d8d8;
 }
 
 /*centers the box that holds prompts*/
@@ -423,7 +466,7 @@ tr:nth-child(odd) {
   width: 42%;
   float: left;
   padding: 20px;
-  /* border: 2px solid red; */
+  border: 2px solid red;
 } 
 
 /*Formatting for the right column(input boxes)*/
@@ -431,6 +474,6 @@ tr:nth-child(odd) {
   width: 40%;
   float: right;
   padding: 16px;
-  /* border: 2px solid red; */
+  border: 2px solid red;
   text-align: right;
 } 
