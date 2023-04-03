@@ -6,43 +6,65 @@
   <title>Edit Item</title>
 </head>
 <body>
-
-<Header></Header>
-
-<h1>Edit Item Information</h1>
-
-<br><br>
-
-
-    <!--Select options below-->
-      <label for="beverage"><b>Change Label Type?</b></label>
-      <select name="beverage" id="beverage">
-        <option value="beer">Beer</option>
-        <option value="wine">Wine</option>
-        <option value="vodka">Vodka</option>
-        <option value="rum">Rum</option>
-        <option value="Whiskey">Whiskey</option>
-        <option value="Tequila">Tequila</option>
-        <option value="Gin">Gin</option>
-        <option value="Brandy">Brandy</option>
-        <option value="Mezcal">Mezcal</option>
-      </select>
-
+  <div class="form-editItem" id="addItemForm">
+    <form action="/addItem" class="form-addItem", method="POST">
       <br><br>
-      <label for="thresholdAmount"><b>Update Low Quantity Alert?</b></label>
-      <input type="text" placeholder="Enter Amount" name="Threshold" required>
-      <br><br>
-      <label for="itemUnits"><b>Change Units(ex. 20-Liter Bottles)?</b></label>
-      <input type="text" placeholder="Enter Units" name="Units" required>
-      <br><br>
-      <label for="notes"><b>Additional Notes:</b></label>
-      <input type="text" placeholder="Add your notes here..." name="notes" required>
-      <br><br>
+      <h1><u>Edit Item Information</u></h1>
 
-    <button type="save" class="addItemButton">Save</button>
+      <div class="flex">
+        <div class="column">
+          <div class="card">
+
+
+            <div class="container2">
+
+              <div class="float-child">
+                <br>
+                <label for="beverage"><b>Change Label Type?</b></label>
+                <br><br><br><br>
+                <label for="beverage"><b>Item Name?</b></label>
+                <br><br><br><br>
+                <label for="thresholdAmount"><b>Update Low Quantity Alert?</b></label>
+                <br><br>
+                <label for="itemUnits"><b>Change Stock Amount?</b></label>
+              </div>
+
+              <div class="float-child2">
+                <select name="beverage" id="beverage">
+                  <option value="beer">Beer</option>
+                  <option value="wine">Wine</option>
+                  <option value="vodka">Vodka</option>
+                  <option value="rum">Rum</option>
+                  <option value="Whiskey">Whiskey</option>
+                  <option value="Tequila">Tequila</option>
+                  <option value="Gin">Gin</option>
+                  <option value="Brandy">Brandy</option>
+                  <option value="Mezcal">Mezcal</option>
+                </select>
+                <br>
+                <!-- <select name="beverage" id="beverage">
+                  <option value="beer">Item name</option>
+                </select> -->
+                <input type="text" placeholder="Enter name" name="Threshold" min="0" max="50" required>
+                <input type="number" placeholder="Enter Amount" name="Threshold" min="0" max="50" required>
+                <input type="number" placeholder="Enter Stock" name="Units" min="0" max="50" required>
+
+              </div>
+              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
+        <button type="save" class="addItemButton">Save</button>
     <button type="cancel" class="button2" onclick="goPrev()">Close</button>
   </form>
 </div>
+
 
 <script>
   function goPrev()
