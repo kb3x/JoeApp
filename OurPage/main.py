@@ -86,7 +86,7 @@ def rmvContact():
     
       cursor = mysql.connection.cursor()
       inputDetails = request.form
-      column_value = inputDetails['name']
+      column_value = inputDetails['contactName']
       column_name = 'name'
       cursor.execute("DELETE FROM {} WHERE {} = %s".format(contact, column_name), (column_value,))
       try:
