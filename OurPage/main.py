@@ -3,10 +3,9 @@
 from flask import Flask,render_template, request, flash, redirect
 from flask_mysqldb import MySQL
 import mysql.connector
-from mysql import connector
+from mysql import connector    #, request
 import json
 from flask import jsonify
-#missing item----------------------------------------------------------
 
 # Provide template folder name
 # The default folder name should be "templates" else need to mention custom folder name
@@ -14,10 +13,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
+app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
 
 mysql = MySQL(app)
 

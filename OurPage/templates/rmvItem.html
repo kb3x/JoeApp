@@ -7,34 +7,58 @@
 </head>
 <body>
   <div class="form-removeItem" id="removeItemForm">
-    <form action="/rmvItem" class="form-removeItem", method="POST"> <!--change method to POST or get ??-->
-      <h1>Enter Item To Be Removed</h1>
+    <form action="/rmvItem" class="form-removeItem", method="POST">
+      <br><br>
+      <h1><u>Enter Item To Be Removed</u></h1>
+
+      <div class="flex">
+        <div class="column">
+          <div class="card">
+
+
+            <div class="container2">
+
+              <div class="float-child">
+                <br>
+                <label for="itemName"><b>Item Name:</b></label>
+                <br><br><br><br>
+                <label for="beverage"><b>Table Name:</b></label>
+                <br><br><br><br>
+                <label for="items"><b>Item Name:</b></label>
+              </div>
+
+              <div class="float-child2">
+                <input type="text" placeholder="Enter Item Name" name="itemName" required>
+                <br><br>
+                <select name="beverage" id="beverage">
+                  <option value="beer">Beer</option>
+                  <option value="wine">Wine</option>
+                  <option value="vodka">Vodka</option>
+                  <option value="rum">Rum</option>
+                  <option value="whiskey">Whiskey</option>
+                  <option value="tequila">Tequila</option>
+                  <option value="gin">Gin</option>
+                  <option value="brandy">Brandy</option>
+                  <option value="mezcal">Mezcal</option>
+                </select>
+                <br><br>
+                <select name="items" id="items"> <!--Change to query data from table!!!!!!!!!!!!!!!!!!!!!-->
+                  <option value="beer">Name</option>
+                </select>
+              </div>
+              <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
   
-      <label for="itemName"><b>Item Name:</b></label>
-      <input type="text" placeholder="Enter Item Name" name="itemName" required> <br> <!--Change to query data from table and make a dropdown menu for it!!!!!!!!!!!!!!!!!!!!!-->
-  
-      <!--Select options below-->
-        <label for="beverage"><b>Table Name:</b></label>
-        <select name="beverage" id="beverage">
-          <option value="beer">Beer</option>
-          <option value="wine">Wine</option>
-          <option value="vodka">Vodka</option>
-          <option value="rum">Rum</option>
-          <option value="whiskey">Whiskey</option>
-          <option value="tequila">Tequila</option>
-          <option value="gin">Gin</option>
-          <option value="brandy">Brandy</option>
-          <option value="mezcal">Mezcal</option>
-        </select>
-        <br><br>
-  
-        <br><br>
+
         <button class="addItemButton" type="save">Save</button>
         
     <!-- <button type="cancel" class="cancelBtn" onclick= window.location.href="{{ url_for('page2') }}">Close</button> -->
 
     <button type="cancel" class="button2" onclick="goPrev()">Close</button>
-    <!--closeForm() function might have required check for user input-->
+
   </form>
 </div>
 

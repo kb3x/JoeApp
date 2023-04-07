@@ -8,13 +8,32 @@
 <body>
   <div class="form-rmvContact" id="rmvContactForm">
     <form action="/rmvContact" class="form-rmvContact", method="POST"> <!--change method to POST or get ??-->
-      <h1>Enter Contact To Remove</h1>
-  
-      <label for="contactName"><b>Contact Name:</b></label>
-     <!--Change to query data from table and make a dropdown menu for it!!!!!!!!!!!!!!!!!!!!!-->
-      <select name="names" id="names">
-          <option value="name">Charles Aston</option>
-      </select>
+      <br><br>
+      <h1><u>Enter Contact To Remove</u></h1>
+
+      <div class="flex">
+        <div class="column">
+          <div class="card">
+
+
+            <div class="container2">
+
+              <div class="float-child">
+                <br>
+                <label for="contactName"><b>Contact Name:</b></label>
+              </div>
+
+              <div class="float-child2">
+                <select name="name" id="MyDataName" onclick="grabData()">
+                  <option selected="">Name</option>
+              </select>
+              </div>
+              <br><br><br><br><br><br><br>
+            </div>
+
+          </div>
+        </div>
+      </div>
   
         <br><br>
         <button class="addItemButton" type="save">Save</button>
@@ -33,4 +52,12 @@
     /* window.history.back(); */
     /*location.reload();*/
   }
+</script>
+
+<script>
+function grabData() {
+        // var mylist = document.getElementById("MyDataName"); 
+        const message = 'SELECT name FROM new_schema.contact'
+        send(message);
+    }
 </script>
