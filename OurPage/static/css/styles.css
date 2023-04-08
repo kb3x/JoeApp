@@ -193,12 +193,55 @@ span.psw {
   width: 50%;
 }*/
 
+.searchtopbar b {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.searchtopbar b:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.searchtopbar b.active {
+  background-color: #2196F3;
+  color: white;
+}
+
 /*in searchtopbar, adjusts the position for the log out symbol*/
 .material-symbols-outlined{
   text-align: center;
   position: absolute;
-  right: 10px;
 }
+
+/*in searchtopbar, adjusts the position for the Supplier info symbol*/
+.logoutIcon {
+  text-align: center;
+  position: absolute;
+  right: -13px;
+}
+
+/*in searchtopbar, adjusts the position for the Supplier info symbol*/
+.supplierIcon {
+  text-align: center;
+  position: absolute;
+  right: -13px;
+}
+
+/*in searchtopbar, adjusts the position for the search symbol*/
+.searchIcon {
+  text-align: center;
+  position: absolute;
+  left: -13px;
+}
+
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
@@ -431,6 +474,34 @@ tr:nth-child(odd) {
 
 
 
+.saveForm {
+  border: 2;
+  background-color: #70d879;
+  color: white;
+  padding: 15px 30px;
+  width: 130px;
+  text-align: center;
+  position: absolute;
+  font-size: 16px;
+  /* margin: 5px 5px; */
+  margin: 20px 80px;
+  cursor: pointer;
+
+}
+
+.cancelForm {
+  border: 2;
+  background-color: #ff0000;
+  color: white;
+  padding: 15px 30px;
+  width: 130px;
+  text-align: center;
+  position: absolute;
+  /*top: 0;*/
+  font-size: 16px;
+  margin: 20px 280px;
+  cursor: pointer;
+}
 
 
 
@@ -494,7 +565,7 @@ tr:nth-child(odd) {
 }
 
 /*centers the box that holds prompts*/
-.flex { 
+.flex {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -510,7 +581,7 @@ tr:nth-child(odd) {
   float: left;
   padding: 20px;
   /* border: 2px solid red; */
-} 
+}
 
 /*Formatting for the right column(input boxes)*/
 .float-child2 {
@@ -519,4 +590,4 @@ tr:nth-child(odd) {
   padding: 16px;
   /* border: 2px solid red; */
   text-align: right;
-} 
+}

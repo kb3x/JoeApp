@@ -7,6 +7,7 @@
   <a href="{{ url_for('index') }}">Home</a>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
 
@@ -16,14 +17,32 @@
   <!-- <a class="active" href="#home">Log Out</a> -->
   <a class="active" href="#home"> Log Out &nbsp; &nbsp; <!--&nbsp; adds a blank space in html-->
     <span class="material-symbols-outlined">
-    logout
+      <div class="logoutIcon">
+        logout
+      </div>
     </span>
   </a>
-  <a onclick= window.location.href="{{ url_for('contact') }}">Contact</a>
-  <form>
+  <!-- <a onclick= window.location.href="{{ url_for('contact') }}">Supplier Info</a> -->
+  <a onclick= window.location.href="{{ url_for('contact') }}"> Supplier Info &nbsp; &nbsp; <!--&nbsp; adds a blank space in html-->
+    <span class="material-symbols-outlined">
+      <div class="supplierIcon">
+        list_alt
+      </div>
+    </span>
+  </a>
+  <!-- <form>
     <input type="text" name="search" placeholder="Search..">
-  </form>
+  </form> -->
+  <b onclick= window.location.href="{{ url_for('contact') }}">Search &nbsp; &nbsp;<!--&nbsp; adds a blank space in html-->
+    <span class="material-symbols-outlined">
+      <div class="searchIcon">
+      search
+      </div>
+    </span>
+  </b>
+
 </div>
+
 
 <h1>Gin Inventory</h1>
 
