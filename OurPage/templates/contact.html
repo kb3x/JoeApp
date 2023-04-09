@@ -14,15 +14,32 @@
 
 <div class = "searchtopbar">
   <!-- <a class="active" href="#home">Log Out</a> -->
-<a class="active" href="#home"> Log Out &nbsp; &nbsp; <!--&nbsp; adds a blank space in html-->
+  <a class="active" href="#home"> Log Out &nbsp; &nbsp; <!--&nbsp; adds a blank space in html-->
     <span class="material-symbols-outlined">
-    logout
+      <div class="logoutIcon">
+        logout
+      </div>
     </span>
   </a>
-  <a onclick= window.location.href="{{ url_for('contact') }}">Contact</a>
-  <form>
+  <!-- <a onclick= window.location.href="{{ url_for('contact') }}">Supplier Info</a> -->
+  <a onclick= window.location.href="{{ url_for('contact') }}"> Supplier Info &nbsp; &nbsp; <!--&nbsp; adds a blank space in html-->
+    <span class="material-symbols-outlined">
+      <div class="supplierIcon">
+        list_alt
+      </div>
+    </span>
+  </a>
+  <!-- <form>
     <input type="text" name="search" placeholder="Search..">
-  </form>
+  </form> -->
+  <b onclick= window.location.href="{{ url_for('search') }}">Search &nbsp; &nbsp;<!--&nbsp; adds a blank space in html-->
+    <span class="material-symbols-outlined">
+      <div class="searchIcon">
+      search
+      </div>
+    </span>
+  </b>
+
 </div>
 
 <h1>Supplier Information</h1>
