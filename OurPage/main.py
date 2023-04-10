@@ -13,10 +13,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
+app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -38,9 +38,9 @@ def page2():
    #return render_template('page2.html', data=data)
    return render_template('page2.html')
 
-@app.route('/EditItem/')
-def EditItem():
-    return render_template('EditItem.html')
+#@app.route('/EditItem/')
+#def EditItem():
+ #   return render_template('EditItem.html')
 
 
 
@@ -239,30 +239,109 @@ def rmvItem():
 
 # @app.route('/EditItem/', methods=['POST', 'GET'])
 # def EditItem():
-#    if request.method == "POST":
+#     if request.method == "POST":
 
-#       cursor = mysql.connection.cursor()
+#        cursor = mysql.connection.cursor()
 
       
-#       column_name = 'brand'
-#       column_value = request.form.get('itemName')
-#       liquor = request.form.get('beverage')
-#       input = request.form.get('userInput')
-#       cursor.execute("UPDATE {} SET {} WHERE {} = %s".format(liquor, input, column_name), (column_value,))
-#       try:
-#          mysql.connection.commit()
+#        column_name = 'brand'
+#        column2_name = 'stock'
+#        column_value = request.form.get('itemName')
+#        column2_value = request.form.get('itemUnits')
+#        liquor = request.form.get('beverage2')
+#        input = request.form.get('beverage3')
+#        input2 = request.form.get('itemUnits')
+#        input3 = request.form.get('thresholdAmount')
+#        query = """
+#          SELECT TABLE_NAME
+#          FROM INFORMATION_SCHEMA.COLUMNS
+#          WHERE COLUMN_NAME = 'brand'
+#          AND TABLE_SCHEMA = 'new_schema'
+#          AND TABLE_NAME IN (
+#             SELECT TABLE_NAME
+#             FROM INFORMATION_SCHEMA.TABLES
+#             WHERE TABLE_TYPE = 'BASE TABLE'
+#             AND TABLE_SCHEMA = 'new_schema'
+#          )
+#          AND EXISTS (
+#             SELECT *
+#               FROM (
+#                     SELECT brand
+#                     FROM new_schema.beer
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.brandy
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.gin
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.mezcal
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.rum
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.tequila
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.vodka
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.wine
+#                     UNION ALL
+#                     SELECT brand
+#                     FROM new_schema.whiskey
+#                 ) as t
+#                 WHERE brand = '{testin}'
+#             )
+#         """
+
+#        cursor.execute(query)
+#        result = cursor.fetchone()[0]
+#        print(result)
+#        cursor.execute("UPDATE {} SET brand = %s WHERE brand = %s".format(result), (input, liquor))
+#        cursor.execute("UPDATE {} SET stock = %s WHERE brand = %s".format(result), (column2_value, liquor))
+#        cursor.execute("UPDATE {} SET warning = %s WHERE brand = %s".format(result), (input3, liquor))
+#        try:
+#           mysql.connection.commit()
 
          
-#          cursor.close()
-#          return 'Data successfully edited.'
-#       except:
+#           cursor.close()
+#           return 'Data successfully edited.'
+#        except:
 #          return 'There was an error editing this data'
-#    else:
-#       return render_template('/EditItem.html')
+#     else:
+#        return render_template('/EditItem.html')
    
 
+@app.route('/EditItem/', methods=['POST', 'GET'])
+def EditItem():
+     if request.method == "POST":
+
+        cursor = mysql.connection.cursor()
+
+        liquor = request.form.get('beverage')
+        brand = request.form.get('beverage2')
+        input = request.form.get('beverage3')
+        input2 = request.form.get('itemUnits')
+        input3 = request.form.get('thresholdAmount')
+        cursor.execute("UPDATE {} SET brand = %s WHERE brand = %s".format(liquor), (input, brand))
+        cursor.execute("UPDATE {} SET stock = %s WHERE brand = %s".format(liquor), (input2, input))
+        cursor.execute("UPDATE {} SET warning = %s WHERE brand = %s".format(liquor), (input3, input))
+        try:
+           mysql.connection.commit()
+
+         
+           cursor.close()
+           return 'Data successfully edited.'
+        except:
+          return 'There was an error editing this data'
+
+     else:
+         return render_template('/EditItem.html')
+
       
-   
 
 if __name__=='__main__':
     app.run(debug = True)
