@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="form-editItem" id="addItemForm">
-    <form action="/addItem" class="form-addItem", method="POST">
+    <form action="/EditItem/" class="form-addItem", method="POST">
       <br><br>
       <h1><u>Edit Item Information</u></h1>
 
@@ -20,11 +20,11 @@
 
               <div class="float-child">
                 <br>
-                <label for="beverage"><b>Change Label Type:</b></label>
+                <label for="beverage1"><b>Change Label Type:</b></label>
                 <br><br><br><br>
-                <label for="beverage"><b>Old Item Name:</b></label>
+                <label for="beverage2"><b>Old Item Name:</b></label>
                 <br><br><br><br>
-                <label for="beverage"><b>New Item Name:</b></label>
+                <label for="beverage3"><b>New Item Name:</b></label>
                 <br><br><br><br>
                 <label for="thresholdAmount"><b>Update Low Quantity Alert?</b></label>
                 <br><br><br><br>
@@ -47,13 +47,13 @@
                 <!-- <select name="beverage" id="beverage">
                   <option value="beer">Item name</option>
                 </select> -->
-                <input type="text" placeholder="Enter new name" name="Threshold" required>
+                <input type="text" placeholder="Enter name" name="beverage2" required>
                 <br><br>
-                <input type="text" placeholder="Enter name" name="Threshold" min="0" max="50" required>
+                <input type="text" placeholder="Enter new name" name="beverage3" min="0" max="50" required>
                 <br><br>
-                <input type="number" placeholder="Enter Amount" name="Threshold" min="0" max="50" required>
+                <input type="number" placeholder="Enter Amount" name="thresholdAmount" min="0" max="50" required>
                 <br><br>
-                <input type="number" placeholder="Enter Stock" name="Units" min="0" max="50" required>
+                <input type="number" placeholder="Enter Stock" name="itemUnits" min="0" max="50" required>
 
               </div>
               <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
