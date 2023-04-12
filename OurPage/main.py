@@ -13,10 +13,12 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
+app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
+
+# sqlConnect = mysql.connect()
 
 mysql = MySQL(app)
 
@@ -89,6 +91,12 @@ def addContact():
 
 @app.route('/rmvContact/', methods=['GET', 'POST'])
 def rmvContact():
+    cur1 = db.cursor()
+    cur1.execute('SELECT name FROM contact')
+    namelist = cur1.fetchall()
+    cur1.close()
+    
+    
     if request.method == "POST":
     
       cursor = mysql.connection.cursor()
@@ -106,7 +114,7 @@ def rmvContact():
          return 'There was an error deleting this data'
          
     else:
-      return render_template('rmvContact.html')
+      return render_template('rmvContact.html', namelist=namelist)
 
 
 #tabs/pages route below---------------------------

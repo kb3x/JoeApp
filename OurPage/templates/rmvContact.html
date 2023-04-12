@@ -24,8 +24,12 @@
               </div>
 
               <div class="float-child2">
-                <select name="name" id="MyDataName" onclick="grabData()">
-                  <option selected="">Name</option>
+                <select name="namelist" id="MyDataName">
+                  {%for j in namelist %}
+                    <option value={{j[0]}}></option>
+                    <!-- <option value = {name}></option> -->
+
+                  {% endfor %}
               </select>
               </div>
               <br><br><br><br><br><br><br>
@@ -56,10 +60,16 @@
   }
 </script>
 
+
 <script>
-function grabData() {
-        // var mylist = document.getElementById("MyDataName"); 
-        const message = 'SELECT name FROM new_schema.contact'
-        send(message);
-    }
+  function refreshTable() {
+  $.getJSON('/contactdata', function(data) {
+    var rows = '';
+    $.each(data, function(index, row) {
+      rows += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + row[2] + '</td><td>' + row[3] + '</td></tr>';
+    });
+    $('#inventory tbody').html(rows);
+    });
+  }
+  setInterval(refreshTable, 1000);
 </script>
