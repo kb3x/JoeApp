@@ -32,7 +32,7 @@
               </div>
 
               <div class="float-child2">
-                <select name="beverage" id="beverage">
+                <select name="beverage" id="beverage_id">
                   <option value="beer">Beer</option>
                   <option value="wine">Wine</option>
                   <option value="vodka">Vodka</option>
@@ -44,10 +44,12 @@
                   <option value="Mezcal">Mezcal</option>
                 </select>
                 <br><br>
-                <!-- <select name="beverage" id="beverage">
-                  <option value="beer">Item name</option>
-                </select> -->
-                <input type="text" placeholder="Enter name" name="beverage2" required>
+                <select name="namelist" id="MyDataName">
+                  {%for j in drinknamelist %}
+                    <option value={{j[0]}}>{{j[0]}}</option>
+                  {% endfor %}
+                </select>
+                <!-- <input type="text" placeholder="Enter name" name="beverage2" required> -->
                 <br><br>
                 <input type="text" placeholder="Enter new name" name="beverage3" min="0" max="50" required>
                 <br><br>
