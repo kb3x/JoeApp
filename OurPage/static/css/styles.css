@@ -339,6 +339,10 @@ tr:nth-child(odd) {
     background-color: rgba(223, 221, 221, 0.808);
   }
 
+  .navbar a:active{
+    background-color: rgb(53, 187, 4);
+  }
+
   /* Style the current/active link */
   .navbar a.active {
     background-color: #04aa6d5c;
