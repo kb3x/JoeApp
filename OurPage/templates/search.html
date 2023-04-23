@@ -69,8 +69,10 @@
   <div class="searchContainer">
     <form action="#" method="GET">
       <input class="searchInput" type="text" /><br>
-      <input class="searchButton" type="button" value="Search">
+      <!-- <input class="searchButton" type="button" value="Search"> -->
+      
       </form>
+      <button class = "searchButton" onclick= window.location.href="{{ url_for('searchResults') }}">Search</button>
   </div>
 </body>
 </html>

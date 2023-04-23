@@ -52,6 +52,14 @@ def search():
    cursor.close()
    return render_template('search.html', data=data)
 
+@app.route('/searchResults/')
+def searchResults():
+   cursor = db.cursor()
+   cursor.execute("SELECT name, information, address, notes FROM contact")
+   data = cursor.fetchall()
+   cursor.close()
+   return render_template('searchResults.html', data=data)
+
 
 
 @app.route('/contact/')
