@@ -1,6 +1,6 @@
 # how to use css in python_ flask
 # flask render_template example
-from flask import Flask,render_template, request, flash, redirect
+from flask import Flask,render_template, request, flash, redirect, url_for
 from flask_mysqldb import MySQL
 import mysql.connector
 from mysql import connector    #, request
@@ -13,12 +13,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
+app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
-
-# sqlConnect = mysql.connect()
+db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -27,9 +25,32 @@ mysql = MySQL(app)
 #     return "This is the home page of Flask Application"
  
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    if request.method == "POST":
+      inputDetails = request.form
+      username = inputDetails['uname']
+      password = inputDetails['psw']
+      cursor = mysql.connection.cursor()
+      cursor.execute("SELECT name FROM user WHERE name ='"+username+"'")
+      user = cursor.fetchone()
+      print (user)
+      if user is not None and len(user) is 1:
+         cursor.execute("SELECT password FROM user WHERE password = '"+password+"'")
+         pword = cursor.fetchone()
+         print (pword)
+         if pword is not None and len(pword) is 1:
+               return redirect('/beer/')
+         elif pword is None:
+             return "Incorrect password"
+         else:
+               return "Incorrect password"
+      elif user is None:
+          return "Incorrect user"
+      else:
+         return "Incorrect user"
+    else:
+        return render_template('index.html')
  
 @app.route('/page2/')
 def page2():
@@ -40,10 +61,6 @@ def page2():
    #return render_template('page2.html', data=data)
    return render_template('page2.html')
 
-#@app.route('/EditItem/')
-#def EditItem():
- #   return render_template('EditItem.html')
-
 @app.route('/search/')
 def search():
    cursor = db.cursor()
@@ -52,8 +69,10 @@ def search():
    cursor.close()
    return render_template('search.html', data=data)
 
-
-
+#@app.route('/EditItem/')
+#def EditItem():
+ #   return render_template('EditItem.html')
+ 
 @app.route('/contact/')
 def contact():
    cursor = db.cursor()
