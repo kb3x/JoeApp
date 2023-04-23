@@ -110,10 +110,10 @@ def addContact():
 
 @app.route('/rmvContact/', methods=['GET', 'POST'])
 def rmvContact():
-    cur1 = db.cursor()
-    cur1.execute('SELECT name FROM contact')
-    namelist = cur1.fetchall()
-    cur1.close()
+    dropdownCur = db.cursor()
+    dropdownCur.execute('SELECT name FROM contact')
+    namelist = dropdownCur.fetchall()
+    dropdownCur.close()
     
     
     if request.method == "POST":
@@ -352,6 +352,11 @@ def rmvItem():
 
 @app.route('/EditItem/', methods=['POST', 'GET'])
 def EditItem():
+     dropdownCur = db.cursor()
+     dropdownCur.execute('SELECT brand FROM beer')
+     drinknamelist = dropdownCur.fetchall()
+     dropdownCur.close()
+
      if request.method == "POST":
 
         cursor = mysql.connection.cursor()
@@ -374,7 +379,7 @@ def EditItem():
           return 'There was an error editing this data'
 
      else:
-         return render_template('/EditItem.html')
+         return render_template('/EditItem.html', drinknamelist=drinknamelist)
 
       
 
