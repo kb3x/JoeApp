@@ -26,7 +26,7 @@ mysql = MySQL(app)
  
 
 @app.route('/', methods=['GET', 'POST'])
-def testpage():
+def index():
     if request.method == "POST":
       inputDetails = request.form
       username = inputDetails['uname']
@@ -50,7 +50,7 @@ def testpage():
       else:
          return "Incorrect user"
     else:
-        return render_template('testpage.html')
+        return render_template('index.html')
  
 @app.route('/page2/')
 def page2():
