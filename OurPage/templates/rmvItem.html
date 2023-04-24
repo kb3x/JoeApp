@@ -2,12 +2,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Remove Items</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+  <title>Remove Items</title>
 
 </head>
 <body>
   <div class="form-removeItem" id="removeItemForm">
-    <form action="/rmvItem" class="form-removeItem", method="POST">
+    <form class="form-removeItem" method="POST" action="/rmvItem/">
+
       <br><br>
       <h1><u>Enter Item To Be Removed</u></h1>
 
@@ -28,9 +30,10 @@
               </div>
 
               <div class="float-child2">
-                <input type="text" placeholder="Enter Item Name" name="itemName" required>
+                <input type="text" placeholder="Enter Item Name" name="itemName">
                 <br><br>
-                <select name="beverage" id="beverage">
+                <select name="table" id="table">
+                  <option value="">Please Select</option>
                   <option value="beer">Beer</option>
                   <option value="wine">Wine</option>
                   <option value="vodka">Vodka</option>
@@ -42,8 +45,7 @@
                   <option value="mezcal">Mezcal</option>
                 </select>
                 <br><br>
-                <select name="items" id="items"> <!--Change to query data from table!!!!!!!!!!!!!!!!!!!!!-->
-                  <option value="beer">Name</option>
+                <select name="brand" id="brand"> <!--Change to query data from table!!!!!!!!!!!!!!!!!!!!!-->
                 </select>
               </div>
               <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -66,6 +68,24 @@
 
 
 </body>
+<script>
+$(document).ready(function() {
+    $('#table').change(function() {
+        var table = $(this).val();
+        $.ajax({
+            url: '/brands/' + table,
+            type: 'GET',
+            success: function(data) {
+                var options = '';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                }
+                $('#brand').html(options);
+            }
+        });
+    });
+});
+</script>
 
 <script>
   function goPrev()

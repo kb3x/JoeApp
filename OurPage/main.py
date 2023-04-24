@@ -6,10 +6,12 @@ import mysql.connector
 from mysql import connector    #, request
 import json
 from flask import jsonify
+from flask_cors import CORS, cross_origin
 
 # Provide template folder name
 # The default folder name should be "templates" else need to mention custom folder name
 app = Flask(__name__)
+CORS(app)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -61,14 +63,52 @@ def page2():
    #return render_template('page2.html', data=data)
    return render_template('page2.html')
 
-@app.route('/search/')
+@app.route('/search/', methods = ['GET', 'POST'])
 def search():
-   cursor = db.cursor()
-   cursor.execute("SELECT name, information, address, notes FROM contact")
-   data = cursor.fetchall()
-   cursor.close()
-   return render_template('search.html', data=data)
-
+   if request.method == "POST":
+    search_query = request.form['searchInput']
+    cursor = db.cursor()
+    query = """
+        SELECT *
+        FROM beer 
+        JOIN brandy ON beer.brand = brandy.brand 
+        JOIN gin ON beer.brand = gin.brand 
+        JOIN mezcal ON beer.brand = mezcal.brand 
+        JOIN rum ON beer.brand = rum.brand 
+        JOIN tequila ON beer.brand = tequila.brand 
+        JOIN vodka ON beer.brand = vodka.brand 
+        JOIN whiskey ON beer.brand = whiskey.brand 
+        JOIN wine ON beer.brand = wine.brand 
+        WHERE beer.brand LIKE %s 
+        OR brandy.brand LIKE %s 
+        OR gin.brand LIKE %s 
+        OR mezcal.brand LIKE %s 
+        OR rum.brand LIKE %s 
+        OR tequila.brand LIKE %s 
+        OR vodka.brand LIKE %s 
+        OR whiskey.brand LIKE %s 
+        OR wine.brand LIKE %s
+    """
+    cursor.execute(query, (
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%',
+        '%' + search_query + '%'
+    ))
+    results = cursor.fetchall()
+    print (results)
+    return render_template('results.html', results=results)
+   else:
+      cursor = db.cursor()
+      cursor.execute("SELECT name, information, address, notes FROM contact")
+      data = cursor.fetchall()
+      cursor.close()
+      return render_template('search.html', data=data)
 #@app.route('/EditItem/')
 #def EditItem():
  #   return render_template('EditItem.html')
@@ -110,19 +150,20 @@ def addContact():
 
 @app.route('/rmvContact/', methods=['GET', 'POST'])
 def rmvContact():
-    dropdownCur = db.cursor()
-    dropdownCur.execute('SELECT name FROM contact')
-    namelist = dropdownCur.fetchall()
-    dropdownCur.close()
+    cur1 = db.cursor()
+    cur1.execute('SELECT name FROM contact')
+    namelist = cur1.fetchall()
+    cur1.close()
     
     
     if request.method == "POST":
     
       cursor = mysql.connection.cursor()
       inputDetails = request.form
-      column_value = inputDetails['contactName']
+      column_value = inputDetails['namelist']
+      print (column_value)
       column_name = 'name'
-      cursor.execute("DELETE FROM {} WHERE {} = %s".format(contact, column_name), (column_value,))
+      cursor.execute("DELETE FROM {} WHERE {} = %s".format('contact', column_name), (column_value,))
       try:
          mysql.connection.commit()
 
@@ -153,6 +194,14 @@ def beer():
    return render_template('tabs/beer.html', data=data)
    #return render_template('tabs/beer.html')
 
+@app.route('/winedata')
+def get_wine_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM wine")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
 @app.route('/wine/')
 def wine():
    cursor = db.cursor()
@@ -160,6 +209,14 @@ def wine():
    data = cursor.fetchall()
    return render_template('tabs/wine.html', data=data)
    #return render_template('tabs/wine.html')
+
+@app.route('/vodkadata')
+def get_vodka_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM vodka")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
 
 @app.route('/vodka/')
 def vodka():
@@ -169,6 +226,14 @@ def vodka():
    return render_template('tabs/vodka.html', data=data)
    #return render_template('tabs/vodka.html')
 
+@app.route('/rumdata')
+def get_rum_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM rum")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
 @app.route('/rum/')
 def rum():
    cursor = db.cursor()
@@ -176,6 +241,14 @@ def rum():
    data = cursor.fetchall()
    return render_template('tabs/rum.html', data=data)
    #return render_template('tabs/rum.html')
+
+@app.route('/whiskeydata')
+def get_whiskey_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM whiskey")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
 
 @app.route('/whiskey/')
 def whiskey():
@@ -185,6 +258,14 @@ def whiskey():
    return render_template('tabs/whiskey.html', data=data)
    #return render_template('tabs/whiskey.html')
 
+@app.route('/tequiladata')
+def get_tequila_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM tequila")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
 @app.route('/tequila/')
 def tequila():
    cursor = db.cursor()
@@ -192,6 +273,14 @@ def tequila():
    data = cursor.fetchall()
    return render_template('tabs/tequila.html', data=data)
    #return render_template('tabs/tequila.html')
+
+@app.route('/gindata')
+def get_gin_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM gin")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
 
 @app.route('/gin/')
 def gin():
@@ -201,6 +290,14 @@ def gin():
    return render_template('tabs/gin.html', data=data)
     #return render_template('tabs/gin.html')
 
+@app.route('/brandydata')
+def get_brandy_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM brandy")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
 @app.route('/brandy/')
 def brandy():
    cursor = db.cursor()
@@ -209,6 +306,14 @@ def brandy():
    return render_template('tabs/brandy.html', data=data)
    # return render_template('tabs/brandy.html')
 
+@app.route('/mezcaldata')
+def get_mezcal_data():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT brand, stock FROM mezcal")
+    data = cur.fetchall()
+    cur.close()
+    return jsonify(data)
+
 @app.route('/mezcal/')
 def mezcal():
    cursor = db.cursor()
@@ -216,6 +321,8 @@ def mezcal():
    data = cursor.fetchall()
    return render_template('tabs/mezcal.html', data=data)
    #return render_template('tabs/mezcal.html')
+
+
 
 @app.route('/addItem/', methods=['GET', 'POST'])
 def addItem():
@@ -253,9 +360,10 @@ def rmvItem():
 
       
       column_name = 'brand'
-      column_value = request.form.get('itemName')
-      liquor = request.form.get('beverage')
+      column_value = request.form.get('brand')
+      liquor = request.form.get('table')
       cursor.execute("DELETE FROM {} WHERE {} = %s".format(liquor, column_name), (column_value,))
+      print(liquor, column_name, column_value)
       try:
          mysql.connection.commit()
 
@@ -270,6 +378,27 @@ def rmvItem():
       
     else: 
        return render_template('/rmvItem.html')
+    
+@app.route('/rmvTable/', methods=['GET', 'POST'])
+def Column():
+    if request.method == 'POST':
+        table = request.form.get('table')
+        brand = request.form.get('brand')
+        return jsonify(table, brand)
+    else:
+        cursor = db.cursor()
+        cursor.execute("SHOW TABLES")
+        tables = cursor.fetchall()
+        cursor.close()
+        return render_template('index.html', tables=tables)
+    
+@app.route('/brands/<table>')
+def get_brands(table):
+    cursor = db.cursor()
+    cursor.execute(f"SELECT DISTINCT brand FROM {table}")
+    brands = cursor.fetchall()
+    cursor.close()
+    return jsonify(brands)
 
 
 # @app.route('/EditItem/', methods=['POST', 'GET'])
@@ -352,11 +481,6 @@ def rmvItem():
 
 @app.route('/EditItem/', methods=['POST', 'GET'])
 def EditItem():
-     dropdownCur = db.cursor()
-     dropdownCur.execute('SELECT brand FROM beer')
-     drinknamelist = dropdownCur.fetchall()
-     dropdownCur.close()
-
      if request.method == "POST":
 
         cursor = mysql.connection.cursor()
@@ -379,9 +503,12 @@ def EditItem():
           return 'There was an error editing this data'
 
      else:
-         return render_template('/EditItem.html', drinknamelist=drinknamelist)
+         return render_template('/EditItem.html')
+     
+
 
       
 
 if __name__=='__main__':
     app.run(debug = True)
+    
