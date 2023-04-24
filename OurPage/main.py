@@ -112,6 +112,25 @@ def search():
 #@app.route('/EditItem/')
 #def EditItem():
  #   return render_template('EditItem.html')
+
+@app.route('/search/')
+def search():
+   cursor = db.cursor()
+   cursor.execute("SELECT name, information, address, notes FROM contact")
+   data = cursor.fetchall()
+   cursor.close()
+   return render_template('search.html', data=data)
+
+@app.route('/searchResults/')
+def searchResults():
+   cursor = db.cursor()
+   cursor.execute("SELECT name, information, address, notes FROM contact")
+   data = cursor.fetchall()
+   cursor.close()
+   return render_template('searchResults.html', data=data)
+
+
+
  
 @app.route('/contact/')
 def contact():
