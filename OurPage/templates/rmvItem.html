@@ -69,23 +69,28 @@
 
 </body>
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
+    $('#table').trigger('change');
+    
+    
     $('#table').change(function() {
         var table = $(this).val();
         $.ajax({
-            url: '/brands/' + table,
+            url: '/brands/' + table + '?_t=' + new Date().getTime(),
             type: 'GET',
+            cache: false,
             success: function(data) {
                 var options = '';
                 for (var i = 0; i < data.length; i++) {
-                    options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                    options += '<option value="' + data[i] + '">' + data[i] + '</option>';
                 }
                 $('#brand').html(options);
             }
         });
     });
 });
-</script>
+
+  </script>
 
 <script>
   function goPrev()

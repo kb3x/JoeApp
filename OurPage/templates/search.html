@@ -17,6 +17,7 @@
 
 
 <body>
+  <form action="/searchpage"  method="GET"></form>
 
     <br><br>
 
@@ -61,13 +62,41 @@
 
       <h1>Search Inventory</h1>
 
-  <div class="searchContainer">
-    <form action="#" method="GET">
-      <input class="searchInput" type="text" /><br>
-      <!-- <input class="searchButton" type="button" value="Search"> -->
-      
-      </form>
-      <button class = "searchButton" onclick= window.location.href="{{ url_for('searchResults') }}">Search</button>
-  </div>
-</body>
-</html>
+<div class="searchContainer">
+  <form method="POST">
+    <input name = "searchInput" id="searchInput" class="searchInput" type="text"/><br>
+    <button name = "searchButton" id="searchButton" class="searchButton" type="submit">Search</button>
+  </form>
+</div>
+
+
+<div id="Beer" class="tabcontent">
+  <br><br>
+  
+  <table id="inventory", class="center">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in results %}
+        <tr>
+          <td> {{item[1]}}</td>
+          <td> {{item[2]}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#searchButton').click(function(event) {
+      event.preventDefault(); 
+      var searchTerm = $('#searchInput').val(); 
+      $('form').submit();
+    });
+  });
+</script>

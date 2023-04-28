@@ -5,7 +5,7 @@ from flask_mysqldb import MySQL
 import mysql.connector
 from mysql import connector    #, request
 import json
-from flask import jsonify
+from flask import jsonify, make_response
 
 # Provide template folder name
 # The default folder name should be "templates" else need to mention custom folder name
@@ -23,6 +23,37 @@ mysql = MySQL(app)
 # @app.route('/')
 # def welcome():
 #     return "This is the home page of Flask Application"
+
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
+@app.route('/get_brands_from_database/<table>')
+def get_brands_from_database(table):
+    cursor = db.cursor()
+    cursor.execute(f"SELECT DISTINCT brand FROM {table}")
+    brands = cursor.fetchall()
+    cursor.close()
+    brands = [brand[0] for brand in brands]
+    return jsonify(brands)
+
+@app.route('/brands/<table>')
+def get_brands(table):
+    cursor = db.cursor()
+    cursor.execute(f"SELECT DISTINCT brand FROM {table}")
+    brands = cursor.fetchall()
+    #cursor.close()
+    response = make_response(jsonify(brands))
+
+    # set the caching headers to prevent caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+
+    return response
  
 
 @app.route('/', methods=['GET', 'POST'])
@@ -61,52 +92,133 @@ def page2():
    #return render_template('page2.html', data=data)
    return render_template('page2.html')
 
-@app.route('/search/', methods = ['GET', 'POST'])
-def search():
-   if request.method == "POST":
-    search_query = request.form['searchInput']
+@app.route('/searchpage', methods=['GET'])
+def searchpage():
     cursor = db.cursor()
-    query = """
-        SELECT *
-        FROM beer 
-        JOIN brandy ON beer.brand = brandy.brand 
-        JOIN gin ON beer.brand = gin.brand 
-        JOIN mezcal ON beer.brand = mezcal.brand 
-        JOIN rum ON beer.brand = rum.brand 
-        JOIN tequila ON beer.brand = tequila.brand 
-        JOIN vodka ON beer.brand = vodka.brand 
-        JOIN whiskey ON beer.brand = whiskey.brand 
-        JOIN wine ON beer.brand = wine.brand 
-        WHERE beer.brand LIKE %s 
-        OR brandy.brand LIKE %s 
-        OR gin.brand LIKE %s 
-        OR mezcal.brand LIKE %s 
-        OR rum.brand LIKE %s 
-        OR tequila.brand LIKE %s 
-        OR vodka.brand LIKE %s 
-        OR whiskey.brand LIKE %s 
-        OR wine.brand LIKE %s
-    """
-    cursor.execute(query, (
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%',
-        '%' + search_query + '%'
-    ))
-    results = cursor.fetchall()
-    print (results)
-    return render_template('results.html', results=results)
-   else:
-      cursor = db.cursor()
-      cursor.execute("SELECT name, information, address, notes FROM contact")
-      data = cursor.fetchall()
-      cursor.close()
-      return render_template('search.html', data=data)
+    cursor.execute("SELECT name, information, address, notes FROM contact")
+    data = cursor.fetchall()
+    cursor.close()
+    return render_template('searchResults.html', data=data)
+
+
+@app.route('/search/', methods=['GET', 'POST'])
+def search():
+    if request.method == "POST":
+        search_query = request.form['searchInput']
+        print(search_query)
+        cursor = db.cursor()
+        query = """
+            SELECT *
+            FROM beer
+            WHERE brand LIKE %s
+        """
+        params = ('%' + search_query + '%',)
+        print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+        cursor.execute(query, params)
+        results = cursor.fetchall()
+
+        if not results:
+            # Search for brand in brandy table
+            query = """
+                SELECT *
+                FROM brandy
+                WHERE brand LIKE %s
+            """
+            params = ('%' + search_query + '%',)
+            print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+            cursor.execute(query, params)
+            results = cursor.fetchall()
+
+            if not results:
+            
+               query = """
+                  SELECT *
+                  FROM wine
+                  WHERE brand LIKE %s
+               """
+               params = ('%' + search_query + '%',)
+               print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+               cursor.execute(query, params)
+               results = cursor.fetchall()
+
+               if not results:
+            
+                  query = """
+                     SELECT *
+                     FROM mezcal
+                     WHERE brand LIKE %s
+                  """
+                  params = ('%' + search_query + '%',)
+                  print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                  cursor.execute(query, params)
+                  results = cursor.fetchall()
+
+                  if not results:
+            
+                     query = """
+                        SELECT *
+                        FROM whiskey
+                        WHERE brand LIKE %s
+                     """
+                     params = ('%' + search_query + '%',)
+                     print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                     cursor.execute(query, params)
+                     results = cursor.fetchall()
+
+                     if not results:
+            
+                        query = """
+                           SELECT *
+                           FROM gin
+                           WHERE brand LIKE %s
+                        """
+                        params = ('%' + search_query + '%',)
+                        print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                        cursor.execute(query, params)
+                        results = cursor.fetchall()
+
+                        if not results:
+            
+                           query = """
+                              SELECT *
+                              FROM vodka
+                              WHERE brand LIKE %s
+                           """
+                           params = ('%' + search_query + '%',)
+                           print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                           cursor.execute(query, params)
+                           results = cursor.fetchall()
+
+                           if not results:
+            
+                              query = """
+                                 SELECT *
+                                 FROM tequila
+                                 WHERE brand LIKE %s
+                              """
+                              params = ('%' + search_query + '%',)
+                              print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                              cursor.execute(query, params)
+                              results = cursor.fetchall()
+
+                              if not results:
+            
+                                 query = """
+                                    SELECT *
+                                    FROM rum
+                                    WHERE brand LIKE %s
+                                 """
+                                 params = ('%' + search_query + '%',)
+                                 print('Executing SQL query: {}, with parameters: {}'.format(query, params))
+                                 cursor.execute(query, params)
+                                 results = cursor.fetchall()
+        print(results)
+        return render_template('search.html', results=results)
+    else:
+        return render_template('search.html')
+  
+   
+
 #@app.route('/EditItem/')
 #def EditItem():
  #   return render_template('EditItem.html')
@@ -402,13 +514,13 @@ def Column():
         cursor.close()
         return render_template('index.html', tables=tables)
     
-@app.route('/brands/<table>')
-def get_brands(table):
-    cursor = db.cursor()
-    cursor.execute(f"SELECT DISTINCT brand FROM {table}")
-    brands = cursor.fetchall()
-    cursor.close()
-    return jsonify(brands)
+#@app.route('/brands/<table>')
+#def get_brands(table):
+#    cursor = db.cursor()
+#    cursor.execute(f"SELECT DISTINCT brand FROM {table}")
+#    brands = cursor.fetchall()
+#    cursor.close()
+#    return jsonify(brands)
 
 
 # @app.route('/EditItem/', methods=['POST', 'GET'])
