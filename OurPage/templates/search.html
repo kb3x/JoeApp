@@ -67,7 +67,48 @@
       <!-- <input class="searchButton" type="button" value="Search"> -->
       
       </form>
-      <button class = "searchButton" onclick= window.location.href="{{ url_for('searchResults') }}">Search</button>
+      <!-- <button class = "searchButton" onclick= window.location.href="{{ url_for('searchResults') }}">Search</button> -->
+      <button class = "searchButton" onclick= "myFunction()">Search</button>
   </div>
+
+
+
+  <div id="Beer" class="tabcontent">
+    <br><br>
+    <div id="hiding">
+    <table id="inventory", class="center">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+          <tr>
+            <td> {{item[0]}}</td>
+            <td> {{item[1]}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+   </div>
+  </div>
+
+
+<!--Function to hide the results table on the search page-->
+  <script>
+    function myFunction() {
+      var x = document.getElementById("hiding");
+      x.style.display = "block";
+      // below code is for hiding and showing table on button click
+      // if (x.style.display === "none") {
+      //   x.style.display = "block";
+      // } else {
+      //   x.style.display = "none";
+      // }
+    }
+    </script>
+
 </body>
 </html>
