@@ -645,3 +645,8 @@ tr:nth-child(odd) {
 .searchButton:hover {
   border: 1px solid #bbb;
 }
+
+/*Hide the table initially on the page*/
+#hiding {
+  display:none;
+}
