@@ -647,6 +647,6 @@ tr:nth-child(odd) {
 }
 
 /*Hide the table initially on the page*/
-#hiding {
-  display:none;
-}
+/* #searchresult {
+  display:block;
+} */
