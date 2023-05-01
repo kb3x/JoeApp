@@ -454,7 +454,7 @@ def addItem():
       brand = inputDetails['itemName']
       stock = inputDetails['Quantity']
       liquor = inputDetails['beverage']
-      warning = inputDetails['Threshold']
+      warning = 50
       warningTrigger = 0
       cur = mysql.connection.cursor()
       cur.execute(f"INSERT INTO {dict[liquor]}(brand, stock, warning, warningTrigger) VALUES(%s, %s, %s, %s)", (brand, stock, warning, warningTrigger))
