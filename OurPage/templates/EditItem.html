@@ -3,6 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
   <title>Edit Item</title>
 </head>
 <body>
@@ -32,22 +33,21 @@
               </div>
 
               <div class="float-child2">
-                <select name="beverage" id="beverage_id">
+                <select name="table" id="table" required>
+                  <option value="">Please Select</option>
                   <option value="beer">Beer</option>
                   <option value="wine">Wine</option>
                   <option value="vodka">Vodka</option>
                   <option value="rum">Rum</option>
-                  <option value="Whiskey">Whiskey</option>
-                  <option value="Tequila">Tequila</option>
-                  <option value="Gin">Gin</option>
-                  <option value="Brandy">Brandy</option>
-                  <option value="Mezcal">Mezcal</option>
+                  <option value="whiskey">Whiskey</option>
+                  <option value="tequila">Tequila</option>
+                  <option value="gin">Gin</option>
+                  <option value="brandy">Brandy</option>
+                  <option value="mezcal">Mezcal</option>
                 </select>
                 <br><br>
-                <select name="namelist" id="MyDataName">
-                  {%for j in drinknamelist %}
-                    <option value={{j[0]}}>{{j[0]}}</option>
-                  {% endfor %}
+                <select name="brand" id="brand" required>
+
                 </select>
                 <!-- <input type="text" placeholder="Enter name" name="beverage2" required> -->
                 <br><br>
@@ -75,6 +75,29 @@
   </form>
 </div>
 
+<script>
+  $(document).ready(function() {
+    $('#table').trigger('change');
+    
+    
+    $('#table').change(function() {
+        var table = $(this).val();
+        $.ajax({
+            url: '/brands/' + table + '?_t=' + new Date().getTime(),
+            type: 'GET',
+            cache: false,
+            success: function(data) {
+                var options = '';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value="' + data[i] + '">' + data[i] + '</option>';
+                }
+                $('#brand').html(options);
+            }
+        });
+    });
+});
+
+  </script>
 
 <script>
   function goPrev()

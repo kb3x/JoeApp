@@ -13,10 +13,10 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ThaoDuong*6'
+app.config['MYSQL_PASSWORD'] = 'Skywalker88!'
 app.config['MYSQL_DB'] = 'new_schema'
 
-db=mysql.connector.connect(host="localhost", user="root", password="ThaoDuong*6",database="new_schema")
+db=mysql.connector.connect(host="localhost", user="root", password="Skywalker88!",database="new_schema")
 
 mysql = MySQL(app)
 
@@ -264,7 +264,7 @@ def addContact():
       try:
             mysql.connection.commit()
             cur.close()
-            return "Success!"
+            return redirect('/beer/')
       except:
             return "There was an error adding the information."
     else:
@@ -291,7 +291,7 @@ def rmvContact():
 
          
          cursor.close()
-         return 'Row deleted successfully'
+         return redirect('/beer/')
       except:
          return 'There was an error deleting this data'
          
@@ -461,7 +461,7 @@ def addItem():
       try:
             mysql.connection.commit()
             cur.close()
-            return "Success!"
+            return redirect('/beer/')
       except:
             return "There was an error adding the information."
       
@@ -491,7 +491,7 @@ def rmvItem():
 
          
          cursor.close()
-         return 'Row deleted successfully'
+         return redirect('/beer/')
       except:
          return 'There was an error deleting this data'
 
@@ -607,20 +607,21 @@ def EditItem():
 
         cursor = mysql.connection.cursor()
 
-        liquor = request.form.get('beverage')
-        brand = request.form.get('beverage2')
+        liquor = request.form.get('table')
+        brand = request.form.get('brand')
         input = request.form.get('beverage3')
         input2 = request.form.get('itemUnits')
-        input3 = request.form.get('thresholdAmount')
+        #input3 = request.form.get('thresholdAmount')
+        print(liquor, brand, input, input2)
         cursor.execute("UPDATE {} SET brand = %s WHERE brand = %s".format(liquor), (input, brand))
         cursor.execute("UPDATE {} SET stock = %s WHERE brand = %s".format(liquor), (input2, input))
-        cursor.execute("UPDATE {} SET warning = %s WHERE brand = %s".format(liquor), (input3, input))
+        #cursor.execute("UPDATE {} SET warning = %s WHERE brand = %s".format(liquor), (input3, input))
         try:
            mysql.connection.commit()
 
          
            cursor.close()
-           return 'Data successfully edited.'
+           return redirect('/beer/')
         except:
           return 'There was an error editing this data'
 
